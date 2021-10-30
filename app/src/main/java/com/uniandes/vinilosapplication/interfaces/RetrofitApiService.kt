@@ -15,19 +15,19 @@ private val retrofit = Retrofit.Builder()
 
 interface RetrofitApiService {
     @GET("collectors")
-    fun getProperties():
+    fun getCollectors():
             Call<String>
 
     @FormUrlEncoded
     @POST("collectors")
-    fun postProperties(@Field("name") name: String,
+    fun postCollectors(@Field("name") name: String,
                        @Field("telephone") telephone: String,
                        @Field("email") email: String):
             Call<String>
 
     @FormUrlEncoded
     @PUT("collectors")
-    fun putProperties(@Field("id") id: String,
+    fun putCollectors(@Field("id") id: String,
                       @Field("name") name: String,
                       @Field("telephone") telephone: String,
                       @Field("email") email: String):
