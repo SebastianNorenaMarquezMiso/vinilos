@@ -11,16 +11,9 @@ import com.uniandes.vinilosapplication.data.model.AlbumModel
 import com.uniandes.vinilosapplication.databinding.AlbumItemBinding
 import com.uniandes.vinilosapplication.ui.fragments.AlbumFragmentDirections
 
-class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>() {
-    class AlbumViewHolder(val viewDataBinding: AlbumItemBinding) :
-        RecyclerView.ViewHolder(viewDataBinding.root) {
-        companion object {
-            @LayoutRes
-            val LAYOUT = R.layout.collector_item
-        }
-    }
+class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
 
-    var albums: List<AlbumModel> = emptyList()
+    var albums :List<AlbumModel> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -31,8 +24,7 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>() {
             LayoutInflater.from(parent.context),
             AlbumViewHolder.LAYOUT,
             parent,
-            false
-        )
+            false)
         return AlbumViewHolder(withDataBinding)
     }
 
@@ -41,7 +33,7 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>() {
             it.album = albums[position]
         }
         holder.viewDataBinding.root.setOnClickListener {
-            val action = AlbumFragmentDirections.actionAlbumFragmentToCommentFragment()
+            val action = AlbumFragmentDirections.actionAlbumFragmentToCommentFragment(albums[position].albumId)
             // Navigate using that action
             holder.viewDataBinding.root.findNavController().navigate(action)
         }
@@ -49,5 +41,14 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>() {
 
     override fun getItemCount(): Int {
         return albums.size
+    }
+
+
+    class AlbumViewHolder(val viewDataBinding: AlbumItemBinding) :
+        RecyclerView.ViewHolder(viewDataBinding.root) {
+        companion object {
+            @LayoutRes
+            val LAYOUT = R.layout.album_item
+        }
     }
 }

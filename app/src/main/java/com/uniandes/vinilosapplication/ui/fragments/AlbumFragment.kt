@@ -10,10 +10,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.uniandes.vinilosapplication.R
 import com.uniandes.vinilosapplication.data.model.AlbumModel
 import com.uniandes.vinilosapplication.databinding.AlbumFragmentBinding
 import com.uniandes.vinilosapplication.ui.adapters.AlbumsAdapter
-import com.uniandes.vinilosapplication.ui.viewmodel.AlbumViewModel
+import com.uniandes.vinilosapplication.viewmodels.AlbumViewModel
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -46,8 +47,8 @@ class AlbumFragment : Fragment() {
         val activity = requireNotNull(this.activity) {
             "You can only access the viewModel after onActivityCreated()"
         }
-        viewModel = ViewModelProvider(this, AlbumViewModel.Factory(activity.application)).get(
-            AlbumViewModel::class.java)
+        activity.actionBar?.title = getString(R.string.title_albums)
+        viewModel = ViewModelProvider(this, AlbumViewModel.Factory(activity.application)).get(AlbumViewModel::class.java)
         viewModel.albums.observe(viewLifecycleOwner, Observer<List<AlbumModel>> {
             it.apply {
                 viewModelAdapter!!.albums = this
@@ -57,7 +58,6 @@ class AlbumFragment : Fragment() {
             if (isNetworkError) onNetworkError()
         })
     }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

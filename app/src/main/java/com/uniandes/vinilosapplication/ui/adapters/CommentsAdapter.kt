@@ -9,16 +9,9 @@ import com.uniandes.vinilosapplication.R
 import com.uniandes.vinilosapplication.data.model.CommentModel
 import com.uniandes.vinilosapplication.databinding.CommentItemBinding
 
-class CommentsAdapter : RecyclerView.Adapter<CommentsAdapter.CommentViewHolder>() {
-    class CommentViewHolder(val viewDataBinding: CommentItemBinding) :
-        RecyclerView.ViewHolder(viewDataBinding.root) {
-        companion object {
-            @LayoutRes
-            val LAYOUT = R.layout.collector_item
-        }
-    }
+class CommentsAdapter : RecyclerView.Adapter<CommentsAdapter.CommentViewHolder>(){
 
-    var comments: List<CommentModel> = emptyList()
+    var comments :List<CommentModel> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -29,8 +22,7 @@ class CommentsAdapter : RecyclerView.Adapter<CommentsAdapter.CommentViewHolder>(
             LayoutInflater.from(parent.context),
             CommentViewHolder.LAYOUT,
             parent,
-            false
-        )
+            false)
         return CommentViewHolder(withDataBinding)
     }
 
@@ -38,14 +30,18 @@ class CommentsAdapter : RecyclerView.Adapter<CommentsAdapter.CommentViewHolder>(
         holder.viewDataBinding.also {
             it.comment = comments[position]
         }
-        /*holder.viewDataBinding.root.setOnClickListener {
-            val action = CommentFragmentDirections.actionCommentFragment2ToCommentFragment2()
-            // Navigate using that action
-            holder.viewDataBinding.root.findNavController().navigate(action)
-        }*/
     }
 
     override fun getItemCount(): Int {
         return comments.size
+    }
+
+
+    class CommentViewHolder(val viewDataBinding: CommentItemBinding) :
+        RecyclerView.ViewHolder(viewDataBinding.root) {
+        companion object {
+            @LayoutRes
+            val LAYOUT = R.layout.comment_item
+        }
     }
 }

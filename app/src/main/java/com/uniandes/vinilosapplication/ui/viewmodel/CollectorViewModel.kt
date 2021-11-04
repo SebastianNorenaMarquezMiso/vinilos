@@ -6,8 +6,11 @@ import androidx.lifecycle.*
 import com.uniandes.vinilosapplication.data.model.CollectorModel
 import com.uniandes.vinilosapplication.data.network.broker.NetworkService
 import com.uniandes.vinilosapplication.data.network.broker.NetworkServiceAdapter
+import com.uniandes.vinilosapplication.repositories.CollectorsRepository
 
-class CollectorViewModel(application: Application) : AndroidViewModel(application) {
+class CollectorViewModel(application: Application) :  AndroidViewModel(application) {
+
+    private val collectorsRepository = CollectorsRepository(application)
 
     private val _collectors = MutableLiveData<List<CollectorModel>>()
 
@@ -29,28 +32,14 @@ class CollectorViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
     private fun refreshDataFromNetwork() {
-
-        Log.d("Response", "item".toString())
-
-        NetworkService.getInstance(getApplication()).getCollectors(onComplete = {
-
-            val list = listOf<CollectorModel>()
+        collectorsRepository.refreshData({
             _collectors.postValue(it)
-
-            Log.d("Response", it.toString())
             _eventNetworkError.value = false
             _isNetworkErrorShown.value = false
-        }, {
+        },{
+            Log.d("Error", it.toString())
             _eventNetworkError.value = true
         })
-        /*NetworkServiceAdapter.getCollectors(onResponse = {
-            val list = listOf<CollectorModel>()
-            _collectors.postValue(list)
-            _eventNetworkError.value = false
-            _isNetworkErrorShown.value = false
-        }, onFailure = {
-            _eventNetworkError.value = true
-        })*/
     }
 
     fun onNetworkErrorShown() {
