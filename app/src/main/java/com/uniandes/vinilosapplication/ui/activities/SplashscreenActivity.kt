@@ -16,7 +16,6 @@ class SplashscreenActivity : AppCompatActivity() {
     fun onClick(v: View) {
         if(v?.id == R.id.bt_start) {
             startActivity(Intent(this, MainActivity::class.java))
-            finish();
         }
     }
 }

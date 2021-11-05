@@ -12,6 +12,7 @@ import com.android.volley.toolbox.Volley
 import com.uniandes.vinilosapplication.data.model.AlbumModel
 import com.uniandes.vinilosapplication.data.model.CollectorModel
 import com.uniandes.vinilosapplication.data.model.CommentModel
+import com.uniandes.vinilosapplication.data.model.TrackModel
 import org.json.JSONArray
 import org.json.JSONObject
 import java.awt.font.NumericShaper
@@ -41,6 +42,23 @@ class NetworkService constructor(context: Context) {
                     list.add(i, AlbumModel(albumId = item.getInt("id"),name = item.getString("name"), cover = item.getString("cover"), recordLabel = item.getString("recordLabel"), releaseDate = item.getString("releaseDate"), genre = item.getString("genre"), description = item.getString("description")))
                 }
                 onComplete(list)
+            },
+            Response.ErrorListener {
+                onError(it)
+            }))
+    }
+    fun getAlbumDetail(albumId: Int, onComplete:(resp:AlbumModel)->Unit, onError: (error:VolleyError)->Unit){
+        requestQueue.add(getRequest("albums/$albumId",
+            Response.Listener<String> { response ->
+                val item = JSONObject (response)
+                val tracks = item.getJSONArray("tracks")
+                val list = mutableListOf<TrackModel>()
+                for (i in 0 until tracks.length()) {
+                    val item = tracks.getJSONObject(i)
+                    list.add(i, TrackModel(trackId = item.getInt("id"),name = item.getString("name"), duration = item.getString("duration")))
+                }
+                val album =  AlbumModel(albumId = item.getInt("id"),name = item.getString("name"), cover = item.getString("cover"), recordLabel = item.getString("recordLabel"), releaseDate = item.getString("releaseDate"), genre = item.getString("genre"), description = item.getString("description"),tracks=list)
+                onComplete(album)
             },
             Response.ErrorListener {
                 onError(it)
