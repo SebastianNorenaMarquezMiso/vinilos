@@ -8,5 +8,5 @@ data class AlbumModel(
     val description: String,
     val genre: String,
     val recordLabel: String,
-    val tracks : List<TrackModel>?=null
+    val tracks: List<TrackModel>? = null
 )

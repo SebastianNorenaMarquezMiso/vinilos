@@ -8,7 +8,7 @@ import com.uniandes.vinilosapplication.data.network.broker.NetworkService
 import com.uniandes.vinilosapplication.data.network.broker.NetworkServiceAdapter
 import com.uniandes.vinilosapplication.repositories.CollectorsRepository
 
-class CollectorViewModel(application: Application) :  AndroidViewModel(application) {
+class CollectorViewModel(application: Application) : AndroidViewModel(application) {
 
     private val collectorsRepository = CollectorsRepository(application)
 
@@ -36,7 +36,7 @@ class CollectorViewModel(application: Application) :  AndroidViewModel(applicati
             _collectors.postValue(it)
             _eventNetworkError.value = false
             _isNetworkErrorShown.value = false
-        },{
+        }, {
             Log.d("Error", it.toString())
             _eventNetworkError.value = true
         })

@@ -49,28 +49,34 @@ class CommentFragment : Fragment() {
         activity.actionBar?.title = getString(R.string.title_comments)
         val args: CommentFragmentArgs by navArgs()
         Log.d("Args", args.albumId.toString())
-        viewModel = ViewModelProvider(this, CommentViewModel.Factory(activity.application, args.albumId)).get(CommentViewModel::class.java)
+        viewModel = ViewModelProvider(
+            this,
+            CommentViewModel.Factory(activity.application, args.albumId)
+        ).get(CommentViewModel::class.java)
         viewModel.comments.observe(viewLifecycleOwner, Observer<List<CommentModel>> {
             it.apply {
                 viewModelAdapter!!.comments = this
-                if(this.isEmpty()){
+                if (this.isEmpty()) {
                     binding.txtNoComments.visibility = View.VISIBLE
-                }else{
+                } else {
                     binding.txtNoComments.visibility = View.GONE
                 }
             }
         })
-        viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
-            if (isNetworkError) onNetworkError()
-        })
+        viewModel.eventNetworkError.observe(
+            viewLifecycleOwner,
+            Observer<Boolean> { isNetworkError ->
+                if (isNetworkError) onNetworkError()
+            })
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
     private fun onNetworkError() {
-        if(!viewModel.isNetworkErrorShown.value!!) {
+        if (!viewModel.isNetworkErrorShown.value!!) {
             Toast.makeText(activity, "Network Error", Toast.LENGTH_LONG).show()
             viewModel.onNetworkErrorShown()
         }

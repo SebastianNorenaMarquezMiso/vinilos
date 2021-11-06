@@ -15,11 +15,7 @@ import com.uniandes.vinilosapplication.ui.fragments.AlbumFragmentDirections
 
 class AlbumDetailAdapter : RecyclerView.Adapter<AlbumDetailAdapter.AlbumDetailViewHolder>(){
 
-    var albumDetail : AlbumModel? =null
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
+
 
     var tracks :List<TrackModel> = emptyList()
         set(value) {

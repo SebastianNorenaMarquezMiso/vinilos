@@ -8,7 +8,7 @@ import com.uniandes.vinilosapplication.data.network.broker.NetworkService
 import com.uniandes.vinilosapplication.data.network.broker.NetworkServiceAdapter
 import com.uniandes.vinilosapplication.repositories.CommentsRepository
 
-class CommentViewModel(application: Application, albumId: Int) :  AndroidViewModel(application) {
+class CommentViewModel(application: Application, albumId: Int) : AndroidViewModel(application) {
 
     private val commentsRepository = CommentsRepository(application)
 
@@ -27,7 +27,7 @@ class CommentViewModel(application: Application, albumId: Int) :  AndroidViewMod
     val isNetworkErrorShown: LiveData<Boolean>
         get() = _isNetworkErrorShown
 
-    val id:Int = albumId
+    val id: Int = albumId
 
     init {
         refreshDataFromNetwork()
@@ -38,7 +38,7 @@ class CommentViewModel(application: Application, albumId: Int) :  AndroidViewMod
             _comments.postValue(it)
             _eventNetworkError.value = false
             _isNetworkErrorShown.value = false
-        },{
+        }, {
             Log.d("Error", it.toString())
             _eventNetworkError.value = true
         })

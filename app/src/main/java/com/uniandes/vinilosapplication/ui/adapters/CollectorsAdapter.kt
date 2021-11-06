@@ -1,6 +1,5 @@
 package com.uniandes.vinilosapplication.ui.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
@@ -12,9 +11,9 @@ import com.uniandes.vinilosapplication.data.model.CollectorModel
 import com.uniandes.vinilosapplication.databinding.CollectorItemBinding
 import com.uniandes.vinilosapplication.ui.fragments.CollectorFragmentDirections
 
-class CollectorsAdapter : RecyclerView.Adapter<CollectorsAdapter.CollectorViewHolder>(){
+class CollectorsAdapter : RecyclerView.Adapter<CollectorsAdapter.CollectorViewHolder>() {
 
-    var collectors :List<CollectorModel> = emptyList()
+    var collectors: List<CollectorModel> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -25,7 +24,8 @@ class CollectorsAdapter : RecyclerView.Adapter<CollectorsAdapter.CollectorViewHo
             LayoutInflater.from(parent.context),
             CollectorViewHolder.LAYOUT,
             parent,
-            false)
+            false
+        )
         return CollectorViewHolder(withDataBinding)
     }
 
