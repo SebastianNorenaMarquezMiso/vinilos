@@ -15,7 +15,6 @@ import com.uniandes.vinilosapplication.ui.fragments.AlbumFragmentDirections
 class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
 
     private val picasso = Picasso.get()
-
     var albums :List<AlbumModel> = emptyList()
         set(value) {
             field = value
