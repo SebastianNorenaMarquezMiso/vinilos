@@ -34,20 +34,97 @@
             android:textColor="@color/black"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_logo_album" />
 
+        <Button
+            android:id="@+id/bt_start"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_start"
+            android:fontFamily="@font/montserrat_semibold"
+            android:letterSpacing=".3"
+            android:padding="10dp"
+            android:text="@string/button_start"
+            android:textColor="@color/purple_700"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/albumname" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="410dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/gray_200"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bt_start">
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="151dp"
+                android:layout_height="wrap_content"
+                android:text="@string/descripcion"
+                android:textAlignment="textEnd"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/albumdesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/montserrat_semibold"
+            android:hint="descripcion"
+            android:letterSpacing="0.2"
+            android:text="@{album.description}"
+            android:textColor="@color/black"
+            android:padding="10dp"
+            android:textSize="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="416dp"
+            android:layout_height="30dp"
+            android:background="@color/gray_200"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/albumdesc">
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="131dp"
+                android:layout_height="wrap_content"
+                android:text="@string/canciones"
+                android:textAlignment="center"
+                android:textSize="20sp" />
+        </LinearLayout>
+
         <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:id="@+id/frameLayout"
+            android:layout_width="411dp"
+            android:layout_height="335dp"
             android:layout_below="@+id/albumname"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="-302dp"
-            android:layout_marginEnd="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/albumname"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+            app:layout_constraintVertical_bias="0.0"
             tools:context=".ui.fragments.AlbumDetailFragment">
 
             <ProgressBar
@@ -63,6 +140,8 @@
                 tools:listitem="@layout/track_item" />
 
         </FrameLayout>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
