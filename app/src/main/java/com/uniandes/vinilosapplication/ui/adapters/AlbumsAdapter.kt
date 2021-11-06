@@ -38,7 +38,9 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>() {
     override fun onBindViewHolder(holder: AlbumViewHolder, position: Int) {
         holder.viewDataBinding.also {
             it.album = albums[position]
-            val albumImage = holder.viewDataBinding.ivLogoAlbum
+            val simpleYear =albums[position].releaseDate.subSequence(0, 4)
+            holder.viewDataBinding.textView7.text = albums[position].recordLabel + " - " + simpleYear
+            val albumImage = holder.viewDataBinding.ivCoverAlbum
 //            val albumImage = view!!.findViewById<ImageView>(R.id.iv_logo_album)
             picasso.load(albums[position].cover).into(albumImage)
         }
