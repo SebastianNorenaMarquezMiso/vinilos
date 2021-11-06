@@ -11,9 +11,9 @@ import com.uniandes.vinilosapplication.data.model.AlbumModel
 import com.uniandes.vinilosapplication.databinding.AlbumItemBinding
 import com.uniandes.vinilosapplication.ui.fragments.AlbumFragmentDirections
 
-class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
+class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>() {
 
-    var albums :List<AlbumModel> = emptyList()
+    var albums: List<AlbumModel> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -24,7 +24,8 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
             LayoutInflater.from(parent.context),
             AlbumViewHolder.LAYOUT,
             parent,
-            false)
+            false
+        )
         return AlbumViewHolder(withDataBinding)
     }
 
@@ -33,7 +34,8 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
             it.album = albums[position]
         }
         holder.viewDataBinding.root.setOnClickListener {
-            val action = AlbumFragmentDirections.actionAlbumFragmentToAlbumDetailFragment(albums[position].albumId)
+            val action =
+                AlbumFragmentDirections.actionAlbumFragmentToAlbumDetailFragment(albums[position].albumId)
             // Navigate using that action
             holder.viewDataBinding.root.findNavController().navigate(action)
         }

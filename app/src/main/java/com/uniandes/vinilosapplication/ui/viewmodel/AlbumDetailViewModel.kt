@@ -3,21 +3,14 @@ package com.uniandes.vinilosapplication.ui.viewmodel
 import android.app.Application
 import androidx.lifecycle.*
 import com.uniandes.vinilosapplication.data.model.AlbumModel
-import com.uniandes.vinilosapplication.data.model.TrackModel
 import com.uniandes.vinilosapplication.repositories.AlbumDetailRepository
-import com.uniandes.vinilosapplication.viewmodels.AlbumViewModel
 
 class AlbumDetailViewModel(application: Application, albumId: Int) : AndroidViewModel(application) {
 
     private val albumDetailRepository = AlbumDetailRepository(application)
-
-    private val _tracks = MutableLiveData<List<TrackModel>>()
     private val _albumDetail = MutableLiveData<AlbumModel>()
     val albumDetail: LiveData<AlbumModel>
         get() = _albumDetail
-
-    val tracks: LiveData<List<TrackModel>>
-        get() = _tracks
 
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
 
@@ -36,8 +29,7 @@ class AlbumDetailViewModel(application: Application, albumId: Int) : AndroidView
 
     private fun refreshDataFromNetwork() {
         albumDetailRepository.refreshData(id, {
-
-            _tracks.postValue(it.tracks)
+            _albumDetail.postValue(it)
             _eventNetworkError.value = false
             _isNetworkErrorShown.value = false
         }, {
