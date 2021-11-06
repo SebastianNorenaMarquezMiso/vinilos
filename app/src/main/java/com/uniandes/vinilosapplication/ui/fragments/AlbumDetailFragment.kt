@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -63,7 +64,10 @@ class AlbumDetailFragment : Fragment() {
                 binding.album = this
                 val albumImage = view!!.findViewById<ImageView>(R.id.iv_logo_album)
                 picasso.load(this.cover).into(albumImage)
+                requireView().findViewById<ProgressBar>(R.id.progressBar).visibility=View.VISIBLE
                 viewModelAdapter!!.tracks = this.tracks!!
+                requireView().findViewById<ProgressBar>(R.id.progressBar).visibility=View.INVISIBLE
+//                if (this)
             }
         })
         viewModel.eventNetworkError.observe(
