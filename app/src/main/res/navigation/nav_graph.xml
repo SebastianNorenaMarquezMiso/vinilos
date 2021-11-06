@@ -16,7 +16,7 @@
     <fragment
         android:id="@+id/albumFragment"
         android:name="com.uniandes.vinilosapplication.ui.fragments.AlbumFragment"
-        android:label="album_fragment"
+        android:label="@string/title_album"
         tools:layout="@layout/album_fragment" >
         <action
             android:id="@+id/action_albumFragment_to_commentFragment"
