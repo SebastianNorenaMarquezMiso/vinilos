@@ -2,7 +2,9 @@ package com.uniandes.vinilosapplication.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.annotation.LayoutRes
+import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -12,10 +14,12 @@ import com.uniandes.vinilosapplication.data.model.AlbumModel
 import com.uniandes.vinilosapplication.databinding.AlbumItemBinding
 import com.uniandes.vinilosapplication.ui.fragments.AlbumFragmentDirections
 
-class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
+class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>() {
+
 
     private val picasso = Picasso.get()
-    var albums :List<AlbumModel> = emptyList()
+
+    var albums: List<AlbumModel> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -26,7 +30,8 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
             LayoutInflater.from(parent.context),
             AlbumViewHolder.LAYOUT,
             parent,
-            false)
+            false
+        )
         return AlbumViewHolder(withDataBinding)
     }
 
@@ -36,10 +41,12 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
             val simpleYear =albums[position].releaseDate.subSequence(0, 4)
             holder.viewDataBinding.textView7.text = albums[position].recordLabel + " - " + simpleYear
             val albumImage = holder.viewDataBinding.ivCoverAlbum
+//            val albumImage = view!!.findViewById<ImageView>(R.id.iv_logo_album)
             picasso.load(albums[position].cover).into(albumImage)
         }
         holder.viewDataBinding.root.setOnClickListener {
-            val action = AlbumFragmentDirections.actionAlbumFragmentToAlbumDetailFragment(albums[position].albumId)
+            val action =
+                AlbumFragmentDirections.actionAlbumFragmentToAlbumDetailFragment(albums[position].albumId)
             // Navigate using that action
             holder.viewDataBinding.root.findNavController().navigate(action)
         }
@@ -49,6 +56,10 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
         return albums.size
     }
 
+    @BindingAdapter("imageUrl")
+    fun setImageUrl(view: ImageView, path: String) {
+        picasso.load(path).into(view)
+    }
 
     class AlbumViewHolder(val viewDataBinding: AlbumItemBinding) :
         RecyclerView.ViewHolder(viewDataBinding.root) {

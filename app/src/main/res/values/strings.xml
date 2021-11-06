@@ -49,5 +49,7 @@
     <string name="title_detail_artist">Artista Info</string>
     <string name="title_collector">Coleccionistas</string>
     <string name="title_detail_collector">Coleccionista Info</string>
+    <string name="descripcion">DESCRIPCION</string>
+    <string name="canciones">CANCIONES</string>
     <string name="close_app">Salir</string>
 </resources>

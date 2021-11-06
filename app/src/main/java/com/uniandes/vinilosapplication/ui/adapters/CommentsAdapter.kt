@@ -9,9 +9,9 @@ import com.uniandes.vinilosapplication.R
 import com.uniandes.vinilosapplication.data.model.CommentModel
 import com.uniandes.vinilosapplication.databinding.CommentItemBinding
 
-class CommentsAdapter : RecyclerView.Adapter<CommentsAdapter.CommentViewHolder>(){
+class CommentsAdapter : RecyclerView.Adapter<CommentsAdapter.CommentViewHolder>() {
 
-    var comments :List<CommentModel> = emptyList()
+    var comments: List<CommentModel> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -22,7 +22,8 @@ class CommentsAdapter : RecyclerView.Adapter<CommentsAdapter.CommentViewHolder>(
             LayoutInflater.from(parent.context),
             CommentViewHolder.LAYOUT,
             parent,
-            false)
+            false
+        )
         return CommentViewHolder(withDataBinding)
     }
 

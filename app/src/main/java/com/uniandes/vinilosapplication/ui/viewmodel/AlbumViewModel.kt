@@ -5,7 +5,7 @@ import androidx.lifecycle.*
 import com.uniandes.vinilosapplication.data.model.AlbumModel
 import com.uniandes.vinilosapplication.repositories.AlbumRepository
 
-class AlbumViewModel(application: Application) :  AndroidViewModel(application) {
+class AlbumViewModel(application: Application) : AndroidViewModel(application) {
 
     private val albumsRepository = AlbumRepository(application)
 
@@ -33,7 +33,7 @@ class AlbumViewModel(application: Application) :  AndroidViewModel(application) 
             _albums.postValue(it)
             _eventNetworkError.value = false
             _isNetworkErrorShown.value = false
-        },{
+        }, {
             _eventNetworkError.value = true
         })
     }
