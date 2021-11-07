@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">API_Libs</string>
+    <string name="app_name">Vinilos App</string>
     <string name="default_text">Haga clic en el botón para cargar información</string>
     <string name="post_text">Haga clic en el botón para crear un dato</string>
     <string name="put_text">Haga clic en el botón para modificar un dato</string>

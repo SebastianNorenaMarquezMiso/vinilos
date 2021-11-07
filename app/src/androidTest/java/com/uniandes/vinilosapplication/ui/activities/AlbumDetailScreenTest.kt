@@ -18,6 +18,7 @@ import org.hamcrest.Matcher
 import org.hamcrest.Matchers.`is`
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.TypeSafeMatcher
+import org.hamcrest.core.IsInstanceOf
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -37,7 +38,7 @@ class AlbumDetailScreenTest {
                 withId(R.id.bt_start), withText("Iniciar"),
                 childAtPosition(
                     childAtPosition(
-                        withClassName(`is`("androidx.constraintlayout.widget.ConstraintLayout")),
+                        withId(R.id.layout_splashScreen),
                         1
                     ),
                     2
@@ -66,7 +67,7 @@ class AlbumDetailScreenTest {
             allOf(
                 withId(R.id.albumdesc),
                 withText("Buscando América es el primer álbum de la banda de Rubén Blades y Seis del Solar lanzado en 1984. La producción, bajo el sello Elektra, fusiona diferentes ritmos musicales tales como la salsa, reggae, rock, y el jazz latino. El disco fue grabado en Eurosound Studios en Nueva York entre mayo y agosto de 1983."),
-                withParent(withParent(withId(R.id.nav_host_fragment))),
+                withParent(withParent(IsInstanceOf.instanceOf(android.widget.ScrollView::class.java))),
                 isDisplayed()
             )
         )

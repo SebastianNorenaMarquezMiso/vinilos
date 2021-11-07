@@ -13,6 +13,7 @@
         android:theme="@style/Theme.VinilosApplication">
         <activity
             android:name=".ui.activities.SplashscreenActivity"
+            android:theme="@style/Theme.VinilosApplication.NoActionBar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity
+            android:theme="@style/Theme.VinilosApplication.NoActionBar"
             android:name=".MainActivity"
             android:exported="true">
         </activity>
