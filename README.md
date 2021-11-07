@@ -11,3 +11,12 @@
 ### Descripción
 
 The Software Design Company (TSDC) para crear la versión para dispositivos móviles de la aplicación Vinilos. 
+
+
+### Run
+
+Run Sync Gradle. In Build option menu run Clean Project and Rebuild Project and finally run app
+
+### Run tests
+
+Open tests in com.uniandes.vinilosaplication and run each test
