@@ -20,6 +20,7 @@ import com.uniandes.vinilosapplication.ui.viewmodel.CollectorViewModel
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class CollectorFragment : Fragment() {
+
     private var _binding: CollectorFragmentBinding? = null
     private val binding get() = _binding!!
     private lateinit var recyclerView: RecyclerView
@@ -47,15 +48,18 @@ class CollectorFragment : Fragment() {
         val activity = requireNotNull(this.activity) {
             "You can only access the viewModel after onActivityCreated()"
         }
+
         activity.actionBar?.title = getString(R.string.title_collectors)
         viewModel = ViewModelProvider(this, CollectorViewModel.Factory(activity.application)).get(
             CollectorViewModel::class.java
         )
+
         viewModel.collectors.observe(viewLifecycleOwner, Observer<List<CollectorModel>> {
             it.apply {
                 viewModelAdapter!!.collectors = this
             }
         })
+
         viewModel.eventNetworkError.observe(
             viewLifecycleOwner,
             Observer<Boolean> { isNetworkError ->
@@ -70,6 +74,7 @@ class CollectorFragment : Fragment() {
 
     private fun onNetworkError() {
         if (!viewModel.isNetworkErrorShown.value!!) {
+
             Toast.makeText(activity, "Network Error", Toast.LENGTH_LONG).show()
             viewModel.onNetworkErrorShown()
         }

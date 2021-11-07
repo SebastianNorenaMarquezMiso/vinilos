@@ -5,6 +5,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+
 class NetworkServiceAdapter {
     companion object {
         fun getCollectors(onResponse: (resp: String) -> Unit, onFailure: (resp: String) -> Unit) {
@@ -57,6 +58,7 @@ class NetworkServiceAdapter {
                 body["telephone"] ?: "",
                 body["email"] ?: ""
             ).enqueue(
+
                 object : Callback<String> {
                     override fun onFailure(call: Call<String>, t: Throwable) {
                         onFailure(t.message!!)

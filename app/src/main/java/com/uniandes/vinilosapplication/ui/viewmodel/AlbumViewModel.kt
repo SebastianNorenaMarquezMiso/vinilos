@@ -1,3 +1,4 @@
+
 package com.uniandes.vinilosapplication.viewmodels
 
 import android.app.Application
@@ -51,4 +52,5 @@ class AlbumViewModel(application: Application) : AndroidViewModel(application) {
             throw IllegalArgumentException("Unable to construct viewmodel")
         }
     }
+
 }

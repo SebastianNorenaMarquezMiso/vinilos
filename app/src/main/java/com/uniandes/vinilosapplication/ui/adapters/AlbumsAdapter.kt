@@ -2,6 +2,7 @@ package com.uniandes.vinilosapplication.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+
 import android.widget.ImageView
 import androidx.annotation.LayoutRes
 import androidx.databinding.BindingAdapter
@@ -15,8 +16,6 @@ import com.uniandes.vinilosapplication.databinding.AlbumItemBinding
 import com.uniandes.vinilosapplication.ui.fragments.AlbumFragmentDirections
 
 class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>() {
-
-
     private val picasso = Picasso.get()
 
     var albums: List<AlbumModel> = emptyList()

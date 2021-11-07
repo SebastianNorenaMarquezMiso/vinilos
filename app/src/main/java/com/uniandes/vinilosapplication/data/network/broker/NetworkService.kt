@@ -12,12 +12,15 @@ import com.android.volley.toolbox.Volley
 import com.uniandes.vinilosapplication.data.model.AlbumModel
 import com.uniandes.vinilosapplication.data.model.CollectorModel
 import com.uniandes.vinilosapplication.data.model.CommentModel
+
 import com.uniandes.vinilosapplication.data.model.TrackModel
+
 import org.json.JSONArray
 import org.json.JSONObject
 import java.awt.font.NumericShaper
 
 class NetworkService constructor(context: Context) {
+
     companion object{
         const val BASE_URL= "https://backvynils-javier.herokuapp.com/"
         var instance: NetworkService? = null
@@ -28,10 +31,12 @@ class NetworkService constructor(context: Context) {
                 }
             }
     }
+
     private val requestQueue: RequestQueue by lazy {
         // applicationContext keeps you from leaking the Activity or BroadcastReceiver if someone passes one in.
         Volley.newRequestQueue(context.applicationContext)
     }
+
     fun getAlbums(onComplete:(resp:List<AlbumModel>)->Unit, onError: (error:VolleyError)->Unit){
         requestQueue.add(getRequest("albums",
             Response.Listener<String> { response ->
@@ -116,5 +121,6 @@ class NetworkService constructor(context: Context) {
     }
     private fun putRequest(path: String, body: JSONObject,  responseListener: Response.Listener<JSONObject>, errorListener: Response.ErrorListener ):JsonObjectRequest{
         return  JsonObjectRequest(Request.Method.PUT, BASE_URL+path, body, responseListener, errorListener)
+
     }
 }

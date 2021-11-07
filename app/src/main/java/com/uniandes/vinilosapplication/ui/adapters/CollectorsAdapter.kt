@@ -44,7 +44,6 @@ class CollectorsAdapter : RecyclerView.Adapter<CollectorsAdapter.CollectorViewHo
         return collectors.size
     }
 
-
     class CollectorViewHolder(val viewDataBinding: CollectorItemBinding) :
         RecyclerView.ViewHolder(viewDataBinding.root) {
         companion object {

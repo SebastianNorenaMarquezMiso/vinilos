@@ -37,7 +37,6 @@ class CommentsAdapter : RecyclerView.Adapter<CommentsAdapter.CommentViewHolder>(
         return comments.size
     }
 
-
     class CommentViewHolder(val viewDataBinding: CommentItemBinding) :
         RecyclerView.ViewHolder(viewDataBinding.root) {
         companion object {

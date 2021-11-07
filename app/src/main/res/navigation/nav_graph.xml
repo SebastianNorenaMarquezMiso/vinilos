@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/albumFragment">
+
     <fragment
         android:id="@+id/collectorFragment"
         android:name="com.uniandes.vinilosapplication.ui.fragments.CollectorFragment"
@@ -44,5 +45,4 @@
             android:name="albumId"
             app:argType="integer" />
     </fragment>
-
 </navigation>

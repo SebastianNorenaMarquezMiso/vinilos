@@ -6,6 +6,7 @@ import androidx.lifecycle.*
 import com.uniandes.vinilosapplication.data.model.CollectorModel
 import com.uniandes.vinilosapplication.data.network.broker.NetworkService
 import com.uniandes.vinilosapplication.data.network.broker.NetworkServiceAdapter
+
 import com.uniandes.vinilosapplication.repositories.CollectorsRepository
 
 class CollectorViewModel(application: Application) : AndroidViewModel(application) {
@@ -32,6 +33,7 @@ class CollectorViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
     private fun refreshDataFromNetwork() {
+
         collectorsRepository.refreshData({
             _collectors.postValue(it)
             _eventNetworkError.value = false
@@ -40,6 +42,7 @@ class CollectorViewModel(application: Application) : AndroidViewModel(applicatio
             Log.d("Error", it.toString())
             _eventNetworkError.value = true
         })
+
     }
 
     fun onNetworkErrorShown() {
