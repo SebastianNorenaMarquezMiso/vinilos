@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.action.ViewActions.scrollTo
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.filters.LargeTest
@@ -17,21 +16,20 @@ import org.hamcrest.Matcher
 import org.hamcrest.Matchers.`is`
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.TypeSafeMatcher
-import org.hamcrest.core.IsInstanceOf
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
-class SplashscreenActivityTest2 {
+class AlbumScreenTest {
 
     @Rule
     @JvmField
     var mActivityTestRule = ActivityTestRule(SplashscreenActivity::class.java)
 
     @Test
-    fun splashscreenActivityTest2() {
+    fun splashscreenActivityTest3() {
         val appCompatButton = onView(
             allOf(
                 withId(R.id.bt_start), withText("Iniciar"),
@@ -47,26 +45,15 @@ class SplashscreenActivityTest2 {
         )
         appCompatButton.perform(click())
 
-        val button = onView(
+        Thread.sleep(2000)
+
+        val linearLayout = onView(
             allOf(
-                withText("NUEVO ALBUM"),
-                withParent(withParent(withId(R.id.nav_host_fragment))),
+                withId(R.id.textView6),
                 isDisplayed()
             )
         )
-        button.check(matches(isDisplayed()))
-
-        val recyclerView = onView(
-            allOf(
-                withId(R.id.fragments_rv),
-                withParent(withParent(IsInstanceOf.instanceOf(android.widget.FrameLayout::class.java))),
-                isDisplayed()
-            )
-        )
-        recyclerView.check(matches(isDisplayed()))
-
-        val confirmLoginBtn = onView(allOf(withId(R.id.iv_cover_album)) )
-        confirmLoginBtn.perform(scrollTo(), click())
+        linearLayout.check(matches(isDisplayed()))
     }
 
     private fun childAtPosition(
