@@ -32,7 +32,7 @@ class AlbumDetailScreenTest {
     var mActivityTestRule = ActivityTestRule(SplashscreenActivity::class.java)
 
     @Test
-    fun albumDetailScreenTest2() {
+    fun albumDetailScreenTest() {
         val appCompatButton = onView(
             allOf(
                 withId(R.id.bt_start), withText("Iniciar"),
