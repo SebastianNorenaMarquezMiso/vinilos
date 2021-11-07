@@ -37,13 +37,13 @@
     <string name="subtitle_vinilos">Music App</string>
     <string name="button_start">Iniciar</string>
     <string name="title_album">Álbumes</string>
-    <string name="new_album">Nuevo Álbum</string>
+    <string name="new_album">Nuevo Album</string>
     <string name="title_detail_album">Detalle Álbum</string>
     <string name="add_song">Asociar Canción</string>
     <string name="description_album">Descripción</string>
     <string name="songs_album">Canciones</string>
     <string name="button_add">Agregar</string>
-    <string name="button_add_album">Nuevo Álbum</string>
+    <string name="button_add_album">Nuevo Album</string>
     <string name="button_create_album">Crear Álbum</string>
     <string name="title_artist">Artistas</string>
     <string name="title_detail_artist">Artista Info</string>
