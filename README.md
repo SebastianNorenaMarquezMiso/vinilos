@@ -3,7 +3,7 @@
 ### Equipo
 | Integrantes       | Correo |
 | ----------- | ----------- |
-| Zully Alarcón      | z.alarcon@uniandes.edu.co       |
+| Zully M Alarcón      | z.alarcon@uniandes.edu.co       |
 | Javier Vargas   | ja.vargasl1@uniandes.edu.co        |
 | Jimmy Cárdenas  | ja.cardenas3388@uniandes.edu.co       |
 | Sebastián Noreña Márquez  | s.norenam@uniandes.edu.co        |
