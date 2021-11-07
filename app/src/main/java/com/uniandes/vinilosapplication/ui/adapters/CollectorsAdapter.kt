@@ -12,13 +12,6 @@ import com.uniandes.vinilosapplication.databinding.CollectorItemBinding
 import com.uniandes.vinilosapplication.ui.fragments.CollectorFragmentDirections
 
 class CollectorsAdapter : RecyclerView.Adapter<CollectorsAdapter.CollectorViewHolder>() {
-    class CollectorViewHolder(val viewDataBinding: CollectorItemBinding) :
-        RecyclerView.ViewHolder(viewDataBinding.root) {
-        companion object {
-            @LayoutRes
-            val LAYOUT = R.layout.collector_item
-        }
-    }
 
     var collectors: List<CollectorModel> = emptyList()
         set(value) {
@@ -38,10 +31,7 @@ class CollectorsAdapter : RecyclerView.Adapter<CollectorsAdapter.CollectorViewHo
 
     override fun onBindViewHolder(holder: CollectorViewHolder, position: Int) {
         holder.viewDataBinding.also {
-            // it.collector = collectors[position]
-            it.textView2.setText(collectors[position].name)
-            it.textView3.setText(collectors[position].email)
-            it.textView4.setText(collectors[position].telephone)
+            it.collector = collectors[position]
         }
         holder.viewDataBinding.root.setOnClickListener {
             val action = CollectorFragmentDirections.actionCollectorFragmentToAlbumFragment()
@@ -52,5 +42,13 @@ class CollectorsAdapter : RecyclerView.Adapter<CollectorsAdapter.CollectorViewHo
 
     override fun getItemCount(): Int {
         return collectors.size
+    }
+
+    class CollectorViewHolder(val viewDataBinding: CollectorItemBinding) :
+        RecyclerView.ViewHolder(viewDataBinding.root) {
+        companion object {
+            @LayoutRes
+            val LAYOUT = R.layout.collector_item
+        }
     }
 }

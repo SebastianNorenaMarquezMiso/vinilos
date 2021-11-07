@@ -1,12 +1,14 @@
-package com.uniandes.vinilosapplication.ui.viewmodel
+
+package com.uniandes.vinilosapplication.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.*
 import com.uniandes.vinilosapplication.data.model.AlbumModel
-import com.uniandes.vinilosapplication.data.network.broker.NetworkService
-import com.uniandes.vinilosapplication.data.network.broker.NetworkServiceAdapter
+import com.uniandes.vinilosapplication.repositories.AlbumRepository
 
 class AlbumViewModel(application: Application) : AndroidViewModel(application) {
+
+    private val albumsRepository = AlbumRepository(application)
 
     private val _albums = MutableLiveData<List<AlbumModel>>()
 
@@ -28,22 +30,13 @@ class AlbumViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     private fun refreshDataFromNetwork() {
-        NetworkService.getInstance(getApplication()).getAlbums({
-            val list = listOf<AlbumModel>()
-            _albums.postValue(list)
+        albumsRepository.refreshData({
+            _albums.postValue(it)
             _eventNetworkError.value = false
             _isNetworkErrorShown.value = false
         }, {
             _eventNetworkError.value = true
         })
-        /*NetworkServiceAdapter.getCollectors(onResponse = {
-            val list = listOf<AlbumModel>()
-            _albums.postValue(list)
-            _eventNetworkError.value = false
-            _isNetworkErrorShown.value = false
-        }, onFailure = {
-            _eventNetworkError.value = true
-        })*/
     }
 
     fun onNetworkErrorShown() {
@@ -59,4 +52,5 @@ class AlbumViewModel(application: Application) : AndroidViewModel(application) {
             throw IllegalArgumentException("Unable to construct viewmodel")
         }
     }
+
 }

@@ -18,12 +18,30 @@
             style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/fragments_rv"
+        <Button
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_gradient"
+            android:padding="7dp"
+            android:text="@string/button_add_album"
+            android:textColor="@color/white"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="42dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:letterSpacing=".15"
+            android:fontFamily="@font/montserrat_semibold"
+            />
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/album_item" />
+            android:layout_marginTop="74dp">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/fragments_rv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/album_item" />
+        </ScrollView>
 
     </FrameLayout>
 </layout>

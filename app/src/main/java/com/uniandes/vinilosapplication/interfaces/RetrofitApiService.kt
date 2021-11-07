@@ -1,4 +1,5 @@
 package com.uniandes.vinilosapplication.interfaces
+
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory
@@ -20,20 +21,27 @@ interface RetrofitApiService {
 
     @FormUrlEncoded
     @POST("collectors")
-    fun postCollectors(@Field("name") name: String,
-                       @Field("telephone") telephone: String,
-                       @Field("email") email: String):
+    fun postCollectors(
+        @Field("name") name: String,
+        @Field("telephone") telephone: String,
+        @Field("email") email: String
+    ):
             Call<String>
 
     @FormUrlEncoded
     @PUT("collectors")
-    fun putCollectors(@Field("id") id: String,
-                      @Field("name") name: String,
-                      @Field("telephone") telephone: String,
-                      @Field("email") email: String):
+
+    fun putCollectors(
+        @Field("id") id: String,
+        @Field("name") name: String,
+        @Field("telephone") telephone: String,
+        @Field("email") email: String
+    ):
             Call<String>
 }
+
 object RetrofitApi {
-    val retrofitService : RetrofitApiService by lazy {
-        retrofit.create(RetrofitApiService::class.java) }
+    val retrofitService: RetrofitApiService by lazy {
+        retrofit.create(RetrofitApiService::class.java)
+    }
 }

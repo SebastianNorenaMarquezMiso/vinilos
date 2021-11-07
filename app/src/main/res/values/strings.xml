@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">API_Libs</string>
+    <string name="app_name">Vinilos App</string>
     <string name="default_text">Haga clic en el botón para cargar información</string>
     <string name="post_text">Haga clic en el botón para crear un dato</string>
     <string name="put_text">Haga clic en el botón para modificar un dato</string>
@@ -32,4 +32,24 @@
     <string name="title_albums">Albums</string>
     <string name="title_collectors">Coleccionistas</string>
     <string name="title_comments">Comentarios del álbum</string>
+
+    <string name="title_vinilos">VINILOS</string>
+    <string name="subtitle_vinilos">Music App</string>
+    <string name="button_start">Iniciar</string>
+    <string name="title_album">Álbumes</string>
+    <string name="new_album">Nuevo Album</string>
+    <string name="title_detail_album">Detalle Álbum</string>
+    <string name="add_song">Asociar Canción</string>
+    <string name="description_album">Descripción</string>
+    <string name="songs_album">Canciones</string>
+    <string name="button_add">Agregar</string>
+    <string name="button_add_album">Nuevo Album</string>
+    <string name="button_create_album">Crear Álbum</string>
+    <string name="title_artist">Artistas</string>
+    <string name="title_detail_artist">Artista Info</string>
+    <string name="title_collector">Coleccionistas</string>
+    <string name="title_detail_collector">Coleccionista Info</string>
+    <string name="descripcion">DESCRIPCION</string>
+    <string name="canciones">CANCIONES</string>
+    <string name="close_app">Salir</string>
 </resources>
