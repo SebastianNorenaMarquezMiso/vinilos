@@ -46,6 +46,7 @@
     <string name="button_add_album">Nuevo Album</string>
     <string name="button_create_album">Crear Álbum</string>
     <string name="title_musicians">Artistas</string>
+    <string name="title_detail_musician">Detalle Artista</string>
     <string name="title_artist">Artistas</string>
     <string name="title_detail_artist">Artista Info</string>
     <string name="title_collector">Coleccionistas</string>
