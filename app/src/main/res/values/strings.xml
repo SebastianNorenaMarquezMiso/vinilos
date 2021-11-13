@@ -46,11 +46,15 @@
     <string name="button_add_album">Nuevo Album</string>
     <string name="button_create_album">Crear Álbum</string>
     <string name="title_musicians">Artistas</string>
+    <string name="title_detail_musician">Detalle Artista</string>
     <string name="title_artist">Artistas</string>
     <string name="title_detail_artist">Artista Info</string>
     <string name="title_collector">Coleccionistas</string>
     <string name="title_detail_collector">Coleccionista Info</string>
     <string name="descripcion">DESCRIPCION</string>
     <string name="canciones">CANCIONES</string>
+    <string name="artistas">ARTISTAS</string>
+    <string name="albums">ÁLBUMES</string>
+    <string name="collectors">COLECCIONISTAS</string>
     <string name="close_app">Salir</string>
 </resources>

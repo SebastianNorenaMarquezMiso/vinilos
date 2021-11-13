@@ -15,30 +15,30 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.uniandes.vinilosapplication.R
-import com.uniandes.vinilosapplication.data.model.AlbumModel
-import com.uniandes.vinilosapplication.databinding.AlbumDetailFragmentBinding
-import com.uniandes.vinilosapplication.ui.adapters.AlbumDetailAdapter
-import com.uniandes.vinilosapplication.ui.viewmodel.AlbumDetailViewModel
+import com.uniandes.vinilosapplication.data.model.MusicianModel
+import com.uniandes.vinilosapplication.databinding.MusicianDetailFragmentBinding
+import com.uniandes.vinilosapplication.ui.adapters.MusicianDetailAdapter
+import com.uniandes.vinilosapplication.ui.viewmodel.MusicianDetailViewModel
 
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
-class AlbumDetailFragment : Fragment() {
-    private var _binding: AlbumDetailFragmentBinding? = null
+class MusicianDetailFragment : Fragment() {
+    private var _binding: MusicianDetailFragmentBinding? = null
     private val binding get() = _binding!!
     private lateinit var recyclerView: RecyclerView
-    private lateinit var viewModel: AlbumDetailViewModel
-    private var viewModelAdapter: AlbumDetailAdapter? = null
+    private lateinit var viewModel: MusicianDetailViewModel
+    private var viewModelAdapter: MusicianDetailAdapter? = null
     private val picasso = Picasso.get()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = AlbumDetailFragmentBinding.inflate(inflater, container, false)
+        _binding = MusicianDetailFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
-        viewModelAdapter = AlbumDetailAdapter()
+        viewModelAdapter = MusicianDetailAdapter()
         return view
     }
 
@@ -53,19 +53,19 @@ class AlbumDetailFragment : Fragment() {
         val activity = requireNotNull(this.activity) {
             "You can only access the viewModel after onActivityCreated()"
         }
-        activity.actionBar?.title = getString(R.string.title_albums)
-        val args: AlbumDetailFragmentArgs by navArgs()
+        activity.actionBar?.title = getString(R.string.title_musicians)
+        val args: MusicianDetailFragmentArgs by navArgs()
         viewModel = ViewModelProvider(
             this,
-            AlbumDetailViewModel.Factory(activity.application, args.albumId)
-        ).get(AlbumDetailViewModel::class.java)
-        viewModel.albumDetail.observe(viewLifecycleOwner, Observer<AlbumModel> {
+            MusicianDetailViewModel.Factory(activity.application, args.musicianId)
+        ).get(MusicianDetailViewModel::class.java)
+        viewModel.musicianDetail.observe(viewLifecycleOwner, Observer<MusicianModel> {
             it.apply {
-                binding.album = this
-                val albumImage = view!!.findViewById<ImageView>(R.id.iv_logo_album)
-                picasso.load(this.cover).into(albumImage)
+                binding.musician = this
+                val musicianImage = view!!.findViewById<ImageView>(R.id.iv_musician_picture)
+                picasso.load(this.image).into(musicianImage)
                 requireView().findViewById<ProgressBar>(R.id.progressBar).visibility = View.VISIBLE
-                viewModelAdapter!!.tracks = this.tracks!!
+                viewModelAdapter!!.albums = this.albums!!
                 requireView().findViewById<ProgressBar>(R.id.progressBar).visibility =
                     View.INVISIBLE
             }

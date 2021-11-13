@@ -172,6 +172,69 @@ class NetworkService constructor(context: Context) {
         )
     }
 
+    fun getMusicianDetail(
+        musicianId: Int,
+        onComplete: (resp: MusicianModel) -> Unit,
+        onError: (error: VolleyError) -> Unit
+    ) {
+        requestQueue.add(
+            getRequest("musicians/$musicianId",
+                Response.Listener<String> { response ->
+                    val item = JSONObject(response)
+
+                    // Get album list
+                    val albums = item.getJSONArray("albums")
+                    val albumList = mutableListOf<AlbumModel>()
+                    for (i in 0 until albums.length()) {
+                        val albumItem = albums.getJSONObject(i)
+                        albumList.add(
+                            i,
+                            AlbumModel(
+                                albumId = albumItem.getInt("id"),
+                                name = albumItem.getString("name"),
+                                cover = albumItem.getString("cover"),
+                                recordLabel = albumItem.getString("recordLabel"),
+                                releaseDate = albumItem.getString("releaseDate"),
+                                genre = albumItem.getString("genre"),
+                                description = albumItem.getString("description")
+                            )
+                        )
+                    }
+
+                    // Get performer prizes
+                    val performerPrizes = item.getJSONArray("performerPrizes")
+                    val performerPrizesList = mutableListOf<PerformerPrizesModel>()
+                    for (i in 0 until performerPrizes.length()) {
+                        val performerPrizeItem = performerPrizes.getJSONObject(i)
+                        performerPrizesList.add(
+                            i,
+                            PerformerPrizesModel(
+                                id = performerPrizeItem.getInt("id"),
+                                premiationDate = performerPrizeItem.getString(
+                                    "premiationDate"
+                                )
+                            )
+                        )
+                    }
+
+
+                    val musician = MusicianModel(
+                        id = item.getInt("id"),
+                        name = item.getString("name"),
+                        image = item.getString("image"),
+                        description = item.getString("description"),
+                        birthDate = item.getString("birthDate"),
+                        albums = albumList,
+                        performerPrizes = performerPrizesList
+                    )
+                    onComplete(musician)
+                },
+                Response.ErrorListener {
+                    onError(it)
+                })
+        )
+    }
+
     fun getCollectors(
         onComplete: (resp: List<CollectorModel>) -> Unit,
         onError: (error: VolleyError) -> Unit

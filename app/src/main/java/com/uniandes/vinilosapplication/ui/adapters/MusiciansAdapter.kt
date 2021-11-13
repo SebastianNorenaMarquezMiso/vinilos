@@ -6,11 +6,13 @@ import android.widget.ImageView
 import androidx.annotation.LayoutRes
 import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.uniandes.vinilosapplication.R
 import com.uniandes.vinilosapplication.data.model.MusicianModel
 import com.uniandes.vinilosapplication.databinding.MusicianItemBinding
+import com.uniandes.vinilosapplication.ui.fragments.MusicianFragmentDirections
 
 class MusiciansAdapter : RecyclerView.Adapter<MusiciansAdapter.MusicianViewHolder>() {
 
@@ -43,12 +45,12 @@ class MusiciansAdapter : RecyclerView.Adapter<MusiciansAdapter.MusicianViewHolde
             val musicianImage = holder.viewDataBinding.ivCoverMusician
             picasso.load(musicians[position].image).into(musicianImage)
         }
-        /*holder.viewDataBinding.root.setOnClickListener {
+        holder.viewDataBinding.root.setOnClickListener {
             val action =
-                MusicianFragmentDirections.actionMusicianFragmentToMusicianDetailFragment(musicians[position].musicianId)
+                MusicianFragmentDirections.actionMusicianFragmentToMusicianDetailFragment(musicians[position].id)
             // Navigate using that action
             holder.viewDataBinding.root.findNavController().navigate(action)
-        }*/
+        }
     }
 
     override fun getItemCount(): Int {
