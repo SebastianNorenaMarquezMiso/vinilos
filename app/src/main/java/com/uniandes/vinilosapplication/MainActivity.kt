@@ -10,10 +10,14 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.core.content.res.ResourcesCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.uniandes.vinilosapplication.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
@@ -31,8 +35,12 @@ class MainActivity : AppCompatActivity() {
         // Make sure actions in the ActionBar get propagated to the NavController
         Log.d("act", navController.toString())
         setSupportActionBar(findViewById(R.id.my_toolbar))
+
         supportActionBar?.setBackgroundDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.toolbar_gradient, null))
         setupActionBarWithNavController(navController)
+
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigatin_view)
+        bottomNavigationView.setupWithNavController(navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {
