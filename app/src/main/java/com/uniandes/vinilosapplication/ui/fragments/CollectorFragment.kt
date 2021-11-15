@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -53,7 +54,9 @@ class CollectorFragment : Fragment() {
         )
         viewModel.collectors.observe(viewLifecycleOwner, Observer<List<CollectorModel>> {
             it.apply {
+                requireView().findViewById<ProgressBar>(R.id.progressBar).visibility=View.VISIBLE
                 viewModelAdapter!!.collectors = this
+                requireView().findViewById<ProgressBar>(R.id.progressBar).visibility=View.INVISIBLE
             }
         })
         viewModel.eventNetworkError.observe(
