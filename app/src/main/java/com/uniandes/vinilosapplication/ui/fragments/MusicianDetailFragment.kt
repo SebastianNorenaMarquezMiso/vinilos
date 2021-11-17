@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.uniandes.vinilosapplication.R
+import com.uniandes.vinilosapplication.data.config.CircleTransform
 import com.uniandes.vinilosapplication.data.model.MusicianModel
 import com.uniandes.vinilosapplication.databinding.MusicianDetailFragmentBinding
 import com.uniandes.vinilosapplication.ui.adapters.MusicianDetailAdapter
@@ -63,7 +64,7 @@ class MusicianDetailFragment : Fragment() {
             it.apply {
                 binding.musician = this
                 val musicianImage = view!!.findViewById<ImageView>(R.id.iv_musician_picture)
-                picasso.load(this.image).into(musicianImage)
+                picasso.load(this.image).resize(600, 600).transform(CircleTransform()).into(musicianImage)
                 requireView().findViewById<ProgressBar>(R.id.progressBar).visibility = View.VISIBLE
                 viewModelAdapter!!.albums = this.albums!!
                 requireView().findViewById<ProgressBar>(R.id.progressBar).visibility =

@@ -6,48 +6,50 @@
         <variable name="collector" type="com.uniandes.vinilosapplication.data.model.CollectorModel"/>
     </data>
 
-    <com.google.android.material.card.MaterialCardView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        app:strokeColor="@color/stroke_color"
-        app:strokeWidth="1dp">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingStart="8dp"
+                android:hint="nombre"
+                android:paddingLeft="50dp"
                 android:paddingTop="3dp"
-                android:paddingEnd="8dp"
+                android:paddingRight="50dp"
                 android:paddingBottom="3dp"
                 android:text="@{collector.name}"
+                android:textAlignment="viewStart"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingStart="8dp"
+                android:hint="email"
                 android:paddingTop="3dp"
-                android:paddingEnd="8dp"
                 android:paddingBottom="3dp"
-                android:text="@{collector.email}" />
-
-            <TextView
-                android:id="@+id/textView4"
+                android:paddingRight="50dp"
+                android:paddingLeft="50dp"
+                android:text="@{collector.email}"
+                android:textAlignment="viewStart"
+                android:textSize="16sp" />
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="8dp"
-                android:paddingTop="3dp"
-                android:paddingEnd="8dp"
-                android:paddingBottom="3dp"
-                android:text="@{collector.telephone}" />
+                android:layout_height="10dp"
+                android:background="@drawable/border"
+                android:alpha="0.4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
         </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
