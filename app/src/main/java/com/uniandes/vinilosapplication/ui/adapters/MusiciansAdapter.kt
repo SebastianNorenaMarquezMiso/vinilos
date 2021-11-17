@@ -43,7 +43,7 @@ class MusiciansAdapter : RecyclerView.Adapter<MusiciansAdapter.MusicianViewHolde
             holder.viewDataBinding.genreMusician.text = musicians[position].albums[1].genre
 
             val musicianImage = holder.viewDataBinding.ivCoverMusician
-            picasso.load(musicians[position].image).into(musicianImage)
+            picasso.load(musicians[position].image).resize(400, 400).into(musicianImage)
         }
         holder.viewDataBinding.root.setOnClickListener {
             val action =

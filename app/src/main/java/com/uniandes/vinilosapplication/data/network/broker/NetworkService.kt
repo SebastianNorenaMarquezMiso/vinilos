@@ -12,6 +12,9 @@ import com.android.volley.toolbox.Volley
 import com.uniandes.vinilosapplication.data.model.*
 import org.json.JSONArray
 import org.json.JSONObject
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
+import kotlin.coroutines.suspendCoroutine
 
 class NetworkService constructor(context: Context) {
     companion object {
@@ -30,10 +33,7 @@ class NetworkService constructor(context: Context) {
         Volley.newRequestQueue(context.applicationContext)
     }
 
-    fun getAlbums(
-        onComplete: (resp: List<AlbumModel>) -> Unit,
-        onError: (error: VolleyError) -> Unit
-    ) {
+    suspend fun getAlbums() = suspendCoroutine<List<AlbumModel>> { cont ->
         requestQueue.add(
             getRequest("albums",
                 Response.Listener<String> { response ->
@@ -54,19 +54,17 @@ class NetworkService constructor(context: Context) {
                             )
                         )
                     }
-                    onComplete(list)
+                    cont.resume(list)
                 },
                 Response.ErrorListener {
-                    onError(it)
+                    cont.resumeWithException(it)
                 })
         )
     }
 
-    fun getAlbumDetail(
-        albumId: Int,
-        onComplete: (resp: AlbumModel) -> Unit,
-        onError: (error: VolleyError) -> Unit
-    ) {
+    suspend fun getAlbumDetail(
+        albumId: Int
+    ) = suspendCoroutine<AlbumModel> { cont ->
         requestQueue.add(
             getRequest("albums/$albumId",
                 Response.Listener<String> { response ->
@@ -94,18 +92,17 @@ class NetworkService constructor(context: Context) {
                         description = item.getString("description"),
                         tracks = list
                     )
-                    onComplete(album)
+                    cont.resume(album)
                 },
                 Response.ErrorListener {
-                    onError(it)
+                    cont.resumeWithException(it)
                 })
         )
     }
 
-    fun getMusicians(
-        onComplete: (resp: List<MusicianModel>) -> Unit,
-        onError: (error: VolleyError) -> Unit
-    ) {
+    suspend fun getMusicians(
+
+    ) = suspendCoroutine<List<MusicianModel>> { cont ->
         requestQueue.add(
             getRequest("musicians",
                 Response.Listener<String> { response ->
@@ -164,19 +161,18 @@ class NetworkService constructor(context: Context) {
                             )
                         )
                     }
-                    onComplete(list)
+                    cont.resume(list)
                 },
                 Response.ErrorListener {
-                    onError(it)
+                    Log.d("", it.message.toString())
+                    cont.resumeWithException(it)
                 })
         )
     }
 
-    fun getMusicianDetail(
-        musicianId: Int,
-        onComplete: (resp: MusicianModel) -> Unit,
-        onError: (error: VolleyError) -> Unit
-    ) {
+    suspend fun getMusicianDetail(
+        musicianId: Int
+    ) = suspendCoroutine<MusicianModel> { cont ->
         requestQueue.add(
             getRequest("musicians/$musicianId",
                 Response.Listener<String> { response ->
@@ -227,18 +223,17 @@ class NetworkService constructor(context: Context) {
                         albums = albumList,
                         performerPrizes = performerPrizesList
                     )
-                    onComplete(musician)
+                    cont.resume(musician)
                 },
                 Response.ErrorListener {
-                    onError(it)
+                    Log.d("", it.message.toString())
+                    cont.resumeWithException(it)
                 })
         )
     }
 
-    fun getCollectors(
-        onComplete: (resp: List<CollectorModel>) -> Unit,
-        onError: (error: VolleyError) -> Unit
-    ) {
+    suspend fun getCollectors(
+    ) = suspendCoroutine<List<CollectorModel>> { cont ->
         requestQueue.add(
             getRequest("collectors",
                 Response.Listener<String> { response ->
@@ -257,20 +252,19 @@ class NetworkService constructor(context: Context) {
                             )
                         )
                     }
-                    onComplete(list)
+                    cont.resume(list)
                 },
                 Response.ErrorListener {
-                    onError(it)
                     Log.d("", it.message.toString())
+                    cont.resumeWithException(it)
+
                 })
         )
     }
 
-    fun getComments(
-        albumId: Int,
-        onComplete: (resp: List<CommentModel>) -> Unit,
-        onError: (error: VolleyError) -> Unit
-    ) {
+    suspend fun getComments(
+        albumId: Int
+    ) = suspendCoroutine<List<CommentModel>> { cont ->
         requestQueue.add(
             getRequest("albums/$albumId/comments",
                 Response.Listener<String> { response ->
@@ -289,10 +283,11 @@ class NetworkService constructor(context: Context) {
                             )
                         )
                     }
-                    onComplete(list)
+                    cont.resume(list)
                 },
                 Response.ErrorListener {
-                    onError(it)
+                    Log.d("", it.message.toString())
+                    cont.resumeWithException(it)
                 })
         )
     }
