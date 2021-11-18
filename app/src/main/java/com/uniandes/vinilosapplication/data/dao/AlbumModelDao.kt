@@ -9,7 +9,7 @@ import com.uniandes.vinilosapplication.data.model.AlbumModel
 @Dao
 interface AlbumModelDao {
     @Query("SELECT * FROM albums_table")
-    fun getAlbums():List<AlbumModel>
+    fun getAlbums(): List<AlbumModel>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(album: AlbumModel)

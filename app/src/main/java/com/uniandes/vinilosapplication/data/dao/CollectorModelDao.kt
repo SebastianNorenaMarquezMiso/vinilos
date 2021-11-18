@@ -10,11 +10,11 @@ import com.uniandes.vinilosapplication.data.model.CollectorModel
 @Dao
 interface CollectorModelDao {
     @Query("SELECT * FROM collectors_table")
-    fun getCollectors():List<CollectorModel>
+    fun getCollectors(): List<CollectorModel>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(collector: CollectorModel)
 
     @Query("DELETE FROM collectors_table")
-    suspend fun deleteAll():Int
+    suspend fun deleteAll(): Int
 }

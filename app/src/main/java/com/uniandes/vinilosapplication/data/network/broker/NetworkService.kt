@@ -201,8 +201,9 @@ class NetworkService constructor(context: Context) {
                     // Get performer prizes
                     val performerPrizes = item.getJSONArray("performerPrizes")
                     val performerPrizesList = mutableListOf<PerformerPrizesModel>()
+                    var performerPrizeItem: JSONObject? = null
                     for (i in 0 until performerPrizes.length()) {
-                        val performerPrizeItem = performerPrizes.getJSONObject(i)
+                        performerPrizeItem = performerPrizes.getJSONObject(i)
                         performerPrizesList.add(
                             i,
                             PerformerPrizesModel(
@@ -241,8 +242,9 @@ class NetworkService constructor(context: Context) {
                     Log.d("tagb", response)
                     val resp = JSONArray(response)
                     val list = mutableListOf<CollectorModel>()
+                    var item: JSONObject? = null
                     for (i in 0 until resp.length()) {
-                        val item = resp.getJSONObject(i)
+                        item = resp.getJSONObject(i)
                         list.add(
                             i,
                             CollectorModel(

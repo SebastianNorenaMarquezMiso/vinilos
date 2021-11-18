@@ -1,19 +1,21 @@
 package com.uniandes.vinilosapplication.data.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.uniandes.vinilosapplication.data.model.*
+import com.uniandes.vinilosapplication.data.model.AlbumModel
+import com.uniandes.vinilosapplication.data.model.CollectorModel
+import com.uniandes.vinilosapplication.data.model.CommentModel
+import com.uniandes.vinilosapplication.data.model.MusicianModel
 
 
-@Database(entities = [AlbumModel::class, CollectorModel::class, CommentModel::class,MusicianModel::class], version = 1, exportSchema = false)
+@Database(
+    entities = [AlbumModel::class, CollectorModel::class, CommentModel::class, MusicianModel::class],
+    version = 1,
+    exportSchema = false
+)
 abstract class VinylRoomDatabase : RoomDatabase() {
     abstract fun albumsModelDao(): AlbumModelDao
     abstract fun collectorsDao(): CollectorModelDao
