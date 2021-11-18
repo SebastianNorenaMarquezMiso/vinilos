@@ -1,12 +1,22 @@
 package com.uniandes.vinilosapplication.data.model
 
+
+import androidx.room.Entity
+import androidx.room.Ignore
+import androidx.room.PrimaryKey
+import androidx.room.Relation
+
+@Entity(tableName = "albums_table")
 data class AlbumModel(
-    val albumId: Int,
-    val name: String,
-    val cover: String,
-    val releaseDate: String,
-    val description: String,
-    val genre: String,
-    val recordLabel: String,
-    val tracks: List<TrackModel>? = null
-)
+    @PrimaryKey var albumId: Int?,
+    var name: String?,
+    var cover: String?,
+    var releaseDate: String?,
+    var description: String?,
+    var genre: String?,
+    var recordLabel: String?,
+    @Ignore
+    var tracks: List<TrackModel>?
+) {
+    constructor() : this(0, null, null, null, null, null, null, null)
+}

@@ -43,7 +43,7 @@ class MusicianDetailAdapter :
         holder.viewDataBinding.root.setOnClickListener {
             val action =
                 MusicianDetailFragmentDirections.actionMusicianDetailFragmentToAlbumDetailFragment(
-                    albums[position].albumId
+                    albums[position].albumId!!
                 )
             // Navigate using that action
             holder.viewDataBinding.root.findNavController().navigate(action)
