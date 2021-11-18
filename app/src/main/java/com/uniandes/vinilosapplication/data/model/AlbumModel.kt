@@ -16,7 +16,7 @@ data class AlbumModel(
     var genre: String?,
     var recordLabel: String?,
     @Ignore
-    var tracks: List<TrackModel>?
+    var tracks: List<TrackModel>?=null
 ) {
     constructor() : this(0, null, null, null, null, null, null, null)
 }
