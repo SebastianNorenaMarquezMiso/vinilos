@@ -91,7 +91,8 @@ class NetworkService constructor(context: Context) {
                         recordLabel = item.getString("recordLabel"),
                         releaseDate = item.getString("releaseDate"),
                         genre = item.getString("genre"),
-                        description = item.getString("description")
+                        description = item.getString("description"),
+                        tracks = list
                     )
                     cont.resume(album)
                 },
