@@ -1,5 +1,6 @@
 package com.uniandes.vinilosapplication.ui.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
@@ -18,6 +19,7 @@ class MusicianDetailAdapter :
     private val picasso = Picasso.get()
 
     var albums: List<AlbumModel> = emptyList()
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field = value
             notifyDataSetChanged()

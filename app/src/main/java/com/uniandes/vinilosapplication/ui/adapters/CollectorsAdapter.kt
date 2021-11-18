@@ -1,5 +1,6 @@
 package com.uniandes.vinilosapplication.ui.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
@@ -14,6 +15,7 @@ import com.uniandes.vinilosapplication.ui.fragments.CollectorFragmentDirections
 class CollectorsAdapter : RecyclerView.Adapter<CollectorsAdapter.CollectorViewHolder>() {
 
     var collectors: List<CollectorModel> = emptyList()
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field = value
             notifyDataSetChanged()
