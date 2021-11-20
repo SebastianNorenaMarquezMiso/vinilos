@@ -1,20 +1,25 @@
 package com.uniandes.vinilosapplication.repositories
 
 import android.app.Application
+import android.content.Context
+import android.net.ConnectivityManager
+import com.uniandes.vinilosapplication.data.dao.CollectorModelDao
 import com.uniandes.vinilosapplication.data.model.CollectorModel
 import com.uniandes.vinilosapplication.data.network.broker.NetworkService
 
-class CollectorsRepository(val application: Application) {
+class CollectorsRepository(
+    val application: Application,
+    private val collectorsDao: CollectorModelDao
+) {
     suspend fun refreshData(): List<CollectorModel> {
-        //Determinar la fuente de datos que se va a utilizar. Si es necesario consultar la red, ejecutar el siguiente código
-//        NetworkService.getInstance(application).getCollectors(
-//            {
-//                //Guardar los coleccionistas de la variable it en un almacén de datos local para uso futuro
-//                callback(it)
-//            },
-//            onError
-//        )
-        return NetworkService.getInstance(application).getCollectors();
+        var cached = collectorsDao.getCollectors()
+        return if (cached.isNullOrEmpty()) {
+            val cm =
+                application.baseContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            if (cm.activeNetworkInfo?.type != ConnectivityManager.TYPE_WIFI && cm.activeNetworkInfo?.type != ConnectivityManager.TYPE_MOBILE) {
+                emptyList()
+            } else NetworkService.getInstance(application).getCollectors()
+        } else cached
     }
 
 }

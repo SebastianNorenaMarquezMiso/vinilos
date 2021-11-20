@@ -1,5 +1,6 @@
 package com.uniandes.vinilosapplication.ui.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -20,6 +21,7 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>() {
     private val picasso = Picasso.get()
 
     var albums: List<AlbumModel> = emptyList()
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -38,7 +40,7 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>() {
     override fun onBindViewHolder(holder: AlbumViewHolder, position: Int) {
         holder.viewDataBinding.also {
             it.album = albums[position]
-            val simpleYear =albums[position].releaseDate.subSequence(0, 4)
+            val simpleYear = albums[position].releaseDate?.subSequence(0, 4)
             holder.viewDataBinding.textView7.text = albums[position].recordLabel + " - " + simpleYear
             val albumImage = holder.viewDataBinding.ivCoverAlbum
 //            val albumImage = view!!.findViewById<ImageView>(R.id.iv_logo_album)
@@ -46,7 +48,7 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>() {
         }
         holder.viewDataBinding.root.setOnClickListener {
             val action =
-                AlbumFragmentDirections.actionAlbumFragmentToAlbumDetailFragment(albums[position].albumId)
+                AlbumFragmentDirections.actionAlbumFragmentToAlbumDetailFragment(albums[position].albumId!!)
             // Navigate using that action
             holder.viewDataBinding.root.findNavController().navigate(action)
         }

@@ -55,6 +55,7 @@ class AlbumFragment : Fragment() {
             this,
             AlbumViewModel.Factory(activity.application)
         ).get(AlbumViewModel::class.java)
+
         viewModel.albums.observe(viewLifecycleOwner, Observer<List<AlbumModel>> {
             it.apply {
                 requireView().findViewById<ProgressBar>(R.id.progressBar).visibility=View.VISIBLE
