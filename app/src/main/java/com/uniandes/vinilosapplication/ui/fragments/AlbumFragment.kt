@@ -4,21 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import android.widget.ProgressBar
-
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-
 import com.uniandes.vinilosapplication.R
 import com.uniandes.vinilosapplication.data.model.AlbumModel
 import com.uniandes.vinilosapplication.databinding.AlbumFragmentBinding
 import com.uniandes.vinilosapplication.ui.adapters.AlbumsAdapter
-import com.uniandes.vinilosapplication.viewmodels.AlbumViewModel
+import com.uniandes.vinilosapplication.ui.viewmodel.AlbumViewModel
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -30,10 +27,11 @@ class AlbumFragment : Fragment() {
     private lateinit var viewModel: AlbumViewModel
     private var viewModelAdapter: AlbumsAdapter? = null
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = AlbumFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
         viewModelAdapter = AlbumsAdapter()
@@ -56,6 +54,7 @@ class AlbumFragment : Fragment() {
             this,
             AlbumViewModel.Factory(activity.application)
         ).get(AlbumViewModel::class.java)
+
         viewModel.albums.observe(viewLifecycleOwner, Observer<List<AlbumModel>> {
             it.apply {
                 requireView().findViewById<ProgressBar>(R.id.progressBar).visibility=View.VISIBLE
