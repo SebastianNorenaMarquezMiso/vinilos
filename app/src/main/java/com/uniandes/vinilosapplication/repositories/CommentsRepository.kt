@@ -2,6 +2,7 @@ package com.uniandes.vinilosapplication.repositories
 
 import android.app.Application
 import android.util.Log
+
 import com.uniandes.vinilosapplication.data.model.CommentModel
 import com.uniandes.vinilosapplication.data.network.broker.CacheManager
 import com.uniandes.vinilosapplication.data.network.broker.NetworkService
