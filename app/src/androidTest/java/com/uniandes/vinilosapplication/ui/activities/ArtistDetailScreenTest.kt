@@ -55,7 +55,7 @@ class ArtistDetailScreenTest {
                 withId(R.id.musicianFragment), withContentDescription("ARTISTAS"),
                 childAtPosition(
                     childAtPosition(
-                        withId(R.id.bottom_navigatin_view),
+                        withId(R.id.bottom_navigation_view),
                         0
                     ),
                     1

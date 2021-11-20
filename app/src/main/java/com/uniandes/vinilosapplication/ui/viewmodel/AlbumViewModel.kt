@@ -1,4 +1,4 @@
-package com.uniandes.vinilosapplication.viewmodels
+package com.uniandes.vinilosapplication.ui.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.*
@@ -35,7 +35,7 @@ class AlbumViewModel(application: Application) : AndroidViewModel(application) {
         try {
             viewModelScope.launch(Dispatchers.Default) {
                 withContext(Dispatchers.IO) {
-                    var data = albumsRepository.refreshData()
+                    val data = albumsRepository.refreshData()
                     _albums.postValue(data)
                 }
                 _eventNetworkError.postValue(false)

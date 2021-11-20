@@ -6,21 +6,18 @@
         <item
             android:id="@+id/albumFragment"
             android:title="@string/albums"
-            android:iconTint="@color/purple_200"
             android:icon="@drawable/ic_baseline_album_24"
             app:showAsAction="never" />
 
         <item
             android:id="@+id/musicianFragment"
             android:title="@string/artistas"
-            android:iconTint="@color/purple_200"
             android:icon="@drawable/ic_baseline_music_note_24"
             app:showAsAction="never" />
 
         <item
             android:id="@+id/collectorFragment"
             android:title="@string/collectors"
-            android:iconTint="@color/purple_200"
             android:icon="@drawable/ic_baseline_people_outline_24"
             app:showAsAction="never" />
     </group>

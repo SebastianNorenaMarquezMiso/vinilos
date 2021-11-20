@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="musician"
             type="com.uniandes.vinilosapplication.data.model.MusicianModel" />
@@ -18,6 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:contentDescription="@string/musician_item_image"
             android:scaleType="fitCenter"
             android:src="@mipmap/ic_launcher"
             app:layout_constraintEnd_toEndOf="parent"
@@ -49,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
             android:fontFamily="@font/montserrat_regular"
-            android:hint="Nombre de artista"
+            android:hint="@string/musician_item_name"
             android:paddingBottom="8dp"
             android:text="@{musician.name}"
             android:textSize="18sp"

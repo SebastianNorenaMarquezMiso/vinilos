@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable name="collector" type="com.uniandes.vinilosapplication.data.model.CollectorModel"/>
+
+        <variable
+            name="collector"
+            type="com.uniandes.vinilosapplication.data.model.CollectorModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,7 +23,7 @@
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="nombre"
+                android:hint="@string/collector_name"
                 android:paddingLeft="50dp"
                 android:paddingTop="3dp"
                 android:paddingRight="50dp"
@@ -34,19 +37,21 @@
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="email"
-                android:paddingTop="3dp"
-                android:paddingBottom="3dp"
-                android:paddingRight="50dp"
+                android:hint="@string/collector_email"
                 android:paddingLeft="50dp"
+                android:paddingTop="3dp"
+                android:paddingRight="50dp"
+                android:paddingBottom="3dp"
                 android:text="@{collector.email}"
                 android:textAlignment="viewStart"
                 android:textSize="16sp" />
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
-                android:background="@drawable/border"
                 android:alpha="0.4"
+                android:background="@drawable/border"
+                android:contentDescription="@string/collector_border"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 

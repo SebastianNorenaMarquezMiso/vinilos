@@ -16,7 +16,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
 
             android:orientation="vertical">
 
@@ -36,6 +36,7 @@
                     android:layout_width="218dp"
                     android:layout_height="315dp"
                     android:layout_marginTop="12dp"
+                    android:contentDescription="@string/musician_image"
                     android:scaleType="center"
                     android:src="@drawable/logo_vinilos"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -49,7 +50,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/montserrat_medium"
-                    android:hint="Nombre"
+                    android:hint="@string/musician_name"
                     android:text="@{musician.name}"
                     android:textColor="@color/black"
                     android:textSize="24sp"
@@ -67,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/montserrat_regular"
-                android:hint="Descripción"
+                android:hint="@string/musician_description"
                 android:paddingLeft="50dp"
                 android:paddingTop="25dp"
                 android:paddingRight="50dp"
@@ -106,12 +107,12 @@
                 android:id="@+id/frameLayout"
                 android:layout_width="411dp"
                 android:layout_height="335dp"
+                android:layout_marginBottom="50dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
                 app:layout_constraintVertical_bias="0.0"
-                android:layout_marginBottom="50dp"
                 tools:context=".ui.fragments.MusicianDetailFragment">
 
                 <ProgressBar

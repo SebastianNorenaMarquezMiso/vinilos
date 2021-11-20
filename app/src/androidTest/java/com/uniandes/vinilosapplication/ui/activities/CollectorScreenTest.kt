@@ -52,7 +52,7 @@ class CollectorScreenTest {
                 withId(R.id.collectorFragment), withContentDescription("COLECCIONISTAS"),
                 childAtPosition(
                     childAtPosition(
-                        withId(R.id.bottom_navigatin_view),
+                        withId(R.id.bottom_navigation_view),
                         0
                     ),
                     2

@@ -41,7 +41,8 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>() {
         holder.viewDataBinding.also {
             it.album = albums[position]
             val simpleYear = albums[position].releaseDate?.subSequence(0, 4)
-            holder.viewDataBinding.textView7.text = albums[position].recordLabel + " - " + simpleYear
+            val description = albums[position].recordLabel + " - " + simpleYear
+            holder.viewDataBinding.textView7.text = description
             val albumImage = holder.viewDataBinding.ivCoverAlbum
 //            val albumImage = view!!.findViewById<ImageView>(R.id.iv_logo_album)
             picasso.load(albums[position].cover).into(albumImage)
