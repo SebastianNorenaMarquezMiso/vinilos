@@ -67,7 +67,7 @@ class CollectorScreenTest {
         val textView = onView(
             allOf(
                 withId(R.id.textView3), withText("manollo@caracol.com.co"),
-                withParent(withParent(IsInstanceOf.instanceOf(android.widget.FrameLayout::class.java))),
+                withParent(withParent(IsInstanceOf.instanceOf(android.view.ViewGroup::class.java))),
                 isDisplayed()
             )
         )
