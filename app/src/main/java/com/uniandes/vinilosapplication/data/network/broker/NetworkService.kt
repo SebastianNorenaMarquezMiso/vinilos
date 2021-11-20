@@ -19,7 +19,7 @@ import kotlin.coroutines.suspendCoroutine
 class NetworkService constructor(context: Context) {
     companion object {
         const val BASE_URL = "https://backvynils-javier.herokuapp.com/"
-        var instance: NetworkService? = null
+        private var instance: NetworkService? = null
         fun getInstance(context: Context) =
             instance ?: synchronized(this) {
                 instance ?: NetworkService(context).also {

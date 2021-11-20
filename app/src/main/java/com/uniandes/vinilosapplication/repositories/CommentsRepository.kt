@@ -11,16 +11,16 @@ class CommentsRepository(val application: Application) {
     suspend fun refreshData(
         albumId: Int
     ): List<CommentModel> {
-        var potentialResp = CacheManager.getInstance(application.applicationContext).getComments(albumId)
-        if(potentialResp.isEmpty()){
+        val potentialResp =
+            CacheManager.getInstance(application.applicationContext).getComments(albumId)
+        return if (potentialResp.isEmpty()) {
             Log.d("Cache decision", "get from network")
-            var comments = NetworkService.getInstance(application).getComments(albumId)
+            val comments = NetworkService.getInstance(application).getComments(albumId)
             CacheManager.getInstance(application.applicationContext).addComments(albumId, comments)
-            return comments
-        }
-        else{
+            comments
+        } else {
             Log.d("Cache decision", "return ${potentialResp.size} elements from cache")
-            return potentialResp
+            potentialResp
         }
     }
 }

@@ -1,11 +1,8 @@
 package com.uniandes.vinilosapplication.ui.viewmodel
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.*
 import com.uniandes.vinilosapplication.data.model.CommentModel
-import com.uniandes.vinilosapplication.data.network.broker.NetworkService
-import com.uniandes.vinilosapplication.data.network.broker.NetworkServiceAdapter
 import com.uniandes.vinilosapplication.repositories.CommentsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -40,7 +37,7 @@ class CommentViewModel(application: Application, albumId: Int) : AndroidViewMode
         try {
             viewModelScope.launch(Dispatchers.Default) {
                 withContext(Dispatchers.IO) {
-                    var data = commentsRepository.refreshData(id)
+                    val data = commentsRepository.refreshData(id)
                     _comments.postValue(data)
                 }
                 _eventNetworkError.postValue(false)

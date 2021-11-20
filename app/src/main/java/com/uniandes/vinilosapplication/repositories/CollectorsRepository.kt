@@ -12,7 +12,7 @@ class CollectorsRepository(
     private val collectorsDao: CollectorModelDao
 ) {
     suspend fun refreshData(): List<CollectorModel> {
-        var cached = collectorsDao.getCollectors()
+        val cached = collectorsDao.getCollectors()
         return if (cached.isNullOrEmpty()) {
             val cm =
                 application.baseContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager

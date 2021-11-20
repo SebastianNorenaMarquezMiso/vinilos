@@ -15,7 +15,7 @@ class MusicianRepository(val application: Application) {
 //            },
 //            onError
 //        )
-        return NetworkService.getInstance(application).getMusicians();
+        return NetworkService.getInstance(application).getMusicians()
     }
 
 }

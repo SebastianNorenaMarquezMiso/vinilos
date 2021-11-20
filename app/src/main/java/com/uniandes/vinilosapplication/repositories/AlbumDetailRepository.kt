@@ -15,6 +15,6 @@ class AlbumDetailRepository(val application: Application) {
 //            },
 //            onError
 //        )
-        return NetworkService.getInstance(application).getAlbumDetail(albumId);
+        return NetworkService.getInstance(application).getAlbumDetail(albumId)
     }
 }

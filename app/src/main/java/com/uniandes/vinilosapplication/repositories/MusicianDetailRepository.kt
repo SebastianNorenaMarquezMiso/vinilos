@@ -17,7 +17,7 @@ class MusicianDetailRepository(val application: Application) {
 //            },
 //            onError
 //        )
-        return NetworkService.getInstance(application).getMusicianDetail(musicianId);
+        return NetworkService.getInstance(application).getMusicianDetail(musicianId)
     }
 
 }
