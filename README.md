@@ -1,4 +1,4 @@
-5# Vinilos
+# Vinilos
 
 ### Equipo
 | Integrantes       | Correo |
