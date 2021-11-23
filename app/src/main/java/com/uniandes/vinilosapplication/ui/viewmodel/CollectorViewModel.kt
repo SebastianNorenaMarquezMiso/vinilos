@@ -2,6 +2,7 @@ package com.uniandes.vinilosapplication.ui.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.*
+import com.uniandes.vinilosapplication.data.dao.VinylRoomDatabase
 import com.uniandes.vinilosapplication.data.model.CollectorModel
 import com.uniandes.vinilosapplication.repositories.CollectorsRepository
 import kotlinx.coroutines.Dispatchers
@@ -10,7 +11,7 @@ import kotlinx.coroutines.withContext
 
 class CollectorViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val collectorsRepository = CollectorsRepository(application)
+    private val collectorsRepository = CollectorsRepository(application, VinylRoomDatabase.getDatabase(application.applicationContext).collectorsDao())
 
     private val _collectors = MutableLiveData<List<CollectorModel>>()
 
@@ -35,7 +36,7 @@ class CollectorViewModel(application: Application) : AndroidViewModel(applicatio
         try {
             viewModelScope.launch(Dispatchers.Default) {
                 withContext(Dispatchers.IO) {
-                    var data = collectorsRepository.refreshData()
+                    val data = collectorsRepository.refreshData()
                     _collectors.postValue(data)
                 }
                 _eventNetworkError.postValue(false)

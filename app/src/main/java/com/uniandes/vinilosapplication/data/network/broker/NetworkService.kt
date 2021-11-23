@@ -19,7 +19,7 @@ import kotlin.coroutines.suspendCoroutine
 class NetworkService constructor(context: Context) {
     companion object {
         const val BASE_URL = "https://backvynils-javier.herokuapp.com/"
-        var instance: NetworkService? = null
+        private var instance: NetworkService? = null
         fun getInstance(context: Context) =
             instance ?: synchronized(this) {
                 instance ?: NetworkService(context).also {
@@ -39,8 +39,10 @@ class NetworkService constructor(context: Context) {
                 Response.Listener<String> { response ->
                     val resp = JSONArray(response)
                     val list = mutableListOf<AlbumModel>()
+                    val list2 = mutableListOf<TrackModel>()
+                    var item: JSONObject? = null
                     for (i in 0 until resp.length()) {
-                        val item = resp.getJSONObject(i)
+                        item = resp.getJSONObject(i)
                         list.add(
                             i,
                             AlbumModel(
@@ -50,7 +52,8 @@ class NetworkService constructor(context: Context) {
                                 recordLabel = item.getString("recordLabel"),
                                 releaseDate = item.getString("releaseDate"),
                                 genre = item.getString("genre"),
-                                description = item.getString("description")
+                                description = item.getString("description"),
+                                tracks = list2
                             )
                         )
                     }
@@ -71,14 +74,15 @@ class NetworkService constructor(context: Context) {
                     val item = JSONObject(response)
                     val tracks = item.getJSONArray("tracks")
                     val list = mutableListOf<TrackModel>()
+                    var albumDetail: JSONObject? = null
                     for (i in 0 until tracks.length()) {
-                        val item = tracks.getJSONObject(i)
+                        albumDetail = tracks.getJSONObject(i)
                         list.add(
                             i,
                             TrackModel(
-                                trackId = item.getInt("id"),
-                                name = item.getString("name"),
-                                duration = item.getString("duration")
+                                trackId = albumDetail.getInt("id"),
+                                name = albumDetail.getString("name"),
+                                duration = albumDetail.getString("duration")
                             )
                         )
                     }
@@ -108,15 +112,15 @@ class NetworkService constructor(context: Context) {
                 Response.Listener<String> { response ->
                     val resp = JSONArray(response)
                     val list = mutableListOf<MusicianModel>()
-
                     for (i in 0 until resp.length()) {
                         val item = resp.getJSONObject(i)
 
                         // Get album list
                         val albums = item.getJSONArray("albums")
                         val albumList = mutableListOf<AlbumModel>()
+                        var albumItem: JSONObject? = null
                         for (i in 0 until albums.length()) {
-                            val albumItem = albums.getJSONObject(i)
+                            albumItem = albums.getJSONObject(i)
                             albumList.add(
                                 i,
                                 AlbumModel(
@@ -134,8 +138,9 @@ class NetworkService constructor(context: Context) {
                         // Get performer prizes
                         val performerPrizes = item.getJSONArray("performerPrizes")
                         val performerPrizesList = mutableListOf<PerformerPrizesModel>()
+                        var performerPrizeItem: JSONObject? = null
                         for (i in 0 until performerPrizes.length()) {
-                            val performerPrizeItem = performerPrizes.getJSONObject(i)
+                            performerPrizeItem = performerPrizes.getJSONObject(i)
                             performerPrizesList.add(
                                 i,
                                 PerformerPrizesModel(
@@ -181,8 +186,9 @@ class NetworkService constructor(context: Context) {
                     // Get album list
                     val albums = item.getJSONArray("albums")
                     val albumList = mutableListOf<AlbumModel>()
+                    var albumItem: JSONObject? = null
                     for (i in 0 until albums.length()) {
-                        val albumItem = albums.getJSONObject(i)
+                        albumItem = albums.getJSONObject(i)
                         albumList.add(
                             i,
                             AlbumModel(
@@ -200,8 +206,9 @@ class NetworkService constructor(context: Context) {
                     // Get performer prizes
                     val performerPrizes = item.getJSONArray("performerPrizes")
                     val performerPrizesList = mutableListOf<PerformerPrizesModel>()
+                    var performerPrizeItem: JSONObject? = null
                     for (i in 0 until performerPrizes.length()) {
-                        val performerPrizeItem = performerPrizes.getJSONObject(i)
+                        performerPrizeItem = performerPrizes.getJSONObject(i)
                         performerPrizesList.add(
                             i,
                             PerformerPrizesModel(
@@ -240,8 +247,9 @@ class NetworkService constructor(context: Context) {
                     Log.d("tagb", response)
                     val resp = JSONArray(response)
                     val list = mutableListOf<CollectorModel>()
+                    var item: JSONObject? = null
                     for (i in 0 until resp.length()) {
-                        val item = resp.getJSONObject(i)
+                        item = resp.getJSONObject(i)
                         list.add(
                             i,
                             CollectorModel(

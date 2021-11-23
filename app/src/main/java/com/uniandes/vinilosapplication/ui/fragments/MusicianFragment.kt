@@ -11,12 +11,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
 import com.uniandes.vinilosapplication.R
 import com.uniandes.vinilosapplication.data.model.MusicianModel
 import com.uniandes.vinilosapplication.databinding.MusicianFragmentBinding
 import com.uniandes.vinilosapplication.ui.adapters.MusiciansAdapter
-import com.uniandes.vinilosapplication.viewmodels.MusicianViewModel
+import com.uniandes.vinilosapplication.ui.viewmodel.MusicianViewModel
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -32,7 +31,7 @@ class MusicianFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = MusicianFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
         viewModelAdapter = MusiciansAdapter()

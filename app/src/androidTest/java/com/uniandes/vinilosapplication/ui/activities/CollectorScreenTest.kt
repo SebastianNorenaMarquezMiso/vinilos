@@ -52,7 +52,7 @@ class CollectorScreenTest {
                 withId(R.id.collectorFragment), withContentDescription("COLECCIONISTAS"),
                 childAtPosition(
                     childAtPosition(
-                        withId(R.id.bottom_navigatin_view),
+                        withId(R.id.bottom_navigation_view),
                         0
                     ),
                     2
@@ -67,7 +67,7 @@ class CollectorScreenTest {
         val textView = onView(
             allOf(
                 withId(R.id.textView3), withText("manollo@caracol.com.co"),
-                withParent(withParent(IsInstanceOf.instanceOf(android.widget.FrameLayout::class.java))),
+                withParent(withParent(IsInstanceOf.instanceOf(android.view.ViewGroup::class.java))),
                 isDisplayed()
             )
         )

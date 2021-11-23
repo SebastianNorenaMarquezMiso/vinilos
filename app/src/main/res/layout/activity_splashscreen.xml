@@ -2,29 +2,31 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_splashScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/purple_500"
-    android:id="@+id/layout_splashScreen"
-    tools:context=".ui.activities.SplashscreenActivity">
+    tools:context=".ui.activities.SplashscreenActivity"
+    tools:ignore="Overdraw">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:alpha="0.3"
         android:background="@drawable/background_splash"
-        tools:ignore="MissingConstraints">
-    </LinearLayout>
+        tools:ignore="MissingConstraints" />
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
         tools:ignore="MissingConstraints">
+
         <ImageView
             android:id="@+id/iv_logo_vinilos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/logo_vinilos"
             android:src="@drawable/logo_vinilos"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,24 +35,24 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginVertical="270dp"
-            android:text="VINILOS"
             android:fontFamily="@font/montserrat_semibold"
-            android:textSize="24sp"
+            android:letterSpacing="0.3"
+            android:text="@string/vinilos_name"
             android:textColor="@color/white"
-            android:letterSpacing="0.3"/>
+            android:textSize="24sp" />
 
         <Button
             android:id="@+id/bt_start"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:background="@drawable/button_start"
+            android:fontFamily="@font/montserrat_semibold"
+            android:letterSpacing=".3"
+            android:onClick="onClick"
             android:padding="10dp"
             android:text="@string/button_start"
-            android:textColor="@color/purple_700"
-            android:layout_centerInParent="true"
-            android:letterSpacing=".3"
-            android:fontFamily="@font/montserrat_semibold"
-            android:onClick="onClick"/>
+            android:textColor="@color/purple_700" />
     </RelativeLayout>
 
 

@@ -1,5 +1,6 @@
 package com.uniandes.vinilosapplication.ui.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -20,6 +21,7 @@ class MusiciansAdapter : RecyclerView.Adapter<MusiciansAdapter.MusicianViewHolde
     private val picasso = Picasso.get()
 
     var musicians: List<MusicianModel> = emptyList()
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -40,14 +42,14 @@ class MusiciansAdapter : RecyclerView.Adapter<MusiciansAdapter.MusicianViewHolde
 
             it.musician = musicians[position]
 
-            holder.viewDataBinding.genreMusician.text = musicians[position].albums[1].genre
+            holder.viewDataBinding.genreMusician.text = musicians[position].albums?.get(1)?.genre
 
             val musicianImage = holder.viewDataBinding.ivCoverMusician
             picasso.load(musicians[position].image).resize(400, 400).into(musicianImage)
         }
         holder.viewDataBinding.root.setOnClickListener {
             val action =
-                MusicianFragmentDirections.actionMusicianFragmentToMusicianDetailFragment(musicians[position].id)
+                MusicianFragmentDirections.actionMusicianFragmentToMusicianDetailFragment(musicians[position].id!!)
             // Navigate using that action
             holder.viewDataBinding.root.findNavController().navigate(action)
         }
