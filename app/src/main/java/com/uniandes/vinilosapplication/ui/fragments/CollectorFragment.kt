@@ -54,9 +54,10 @@ class CollectorFragment : Fragment() {
         )
         viewModel.collectors.observe(viewLifecycleOwner, Observer<List<CollectorModel>> {
             it.apply {
-                requireView().findViewById<ProgressBar>(R.id.progressBar).visibility=View.VISIBLE
+                requireView().findViewById<ProgressBar>(R.id.progressBar).visibility = View.VISIBLE
                 viewModelAdapter!!.collectors = this
-                requireView().findViewById<ProgressBar>(R.id.progressBar).visibility=View.INVISIBLE
+                requireView().findViewById<ProgressBar>(R.id.progressBar).visibility =
+                    View.INVISIBLE
             }
         })
         viewModel.eventNetworkError.observe(

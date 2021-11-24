@@ -37,4 +37,8 @@
     <string name="musician_item_image">Musician Item Image</string>
     <string name="musician_item_name">Nombre de artista</string>
     <string name="track_item_image">Track Item Image</string>
+    <string name="collector_detail_email">Collector Email</string>
+    <string name="collector_image">Collector Image</string>
+    <string name="title_detail_collector">Coleccionista Info</string>
+    <string name="collector_telephone">Collector Telephone</string>
 </resources>

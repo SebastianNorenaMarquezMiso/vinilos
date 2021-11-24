@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="musician"
-            type="com.uniandes.vinilosapplication.data.model.MusicianModel" />
+            name="collector"
+            type="com.uniandes.vinilosapplication.data.model.CollectorModel" />
     </data>
 
     <ScrollView
@@ -32,11 +32,11 @@
                 tools:ignore="MissingConstraints">
 
                 <ImageView
-                    android:id="@+id/iv_musician_picture"
+                    android:id="@+id/iv_collector_picture"
                     android:layout_width="218dp"
                     android:layout_height="315dp"
                     android:layout_marginTop="12dp"
-                    android:contentDescription="@string/musician_image"
+                    android:contentDescription="@string/collector_image"
                     android:scaleType="center"
                     android:src="@drawable/logo_vinilos"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -44,42 +44,61 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/musicianName"
+                    android:id="@+id/collectorName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/montserrat_medium"
-                    android:hint="@string/musician_name"
-                    android:text="@{musician.name}"
+                    android:hint="@string/collector_name"
+                    android:text="@{collector.name}"
                     android:textColor="@color/black"
                     android:textSize="24sp"
                     android:translationY="-25dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.501"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/iv_musician_picture" />
+                    app:layout_constraintTop_toBottomOf="@+id/iv_collector_picture" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:id="@+id/musicianDescription"
+                android:id="@+id/collectorEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/montserrat_regular"
-                android:hint="@string/musician_description"
+                android:hint="@string/collector_detail_email"
                 android:paddingLeft="50dp"
                 android:paddingTop="25dp"
                 android:paddingRight="50dp"
                 android:paddingBottom="25dp"
-                android:text="@{musician.description}"
+                android:text="@{collector.email}"
                 android:textColor="@color/gray_900"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+            <TextView
+                android:id="@+id/collectorNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/montserrat_regular"
+                android:hint="@string/collector_telephone"
+                android:paddingLeft="50dp"
+                android:paddingTop="25dp"
+                android:paddingRight="50dp"
+                android:paddingBottom="25dp"
+                android:text="@{collector.telephone}"
+                android:textColor="@color/gray_900"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/collectorEmail" />
 
             <LinearLayout
                 android:id="@+id/linearLayout2"
@@ -90,7 +109,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/musicianDescription">
+                app:layout_constraintTop_toBottomOf="@+id/collectorNumber">
 
                 <TextView
                     android:id="@+id/textView7"
@@ -113,7 +132,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
                 app:layout_constraintVertical_bias="0.0"
-                tools:context=".ui.fragments.MusicianDetailFragment">
+                tools:context=".ui.fragments.CollectorDetailFragment">
 
                 <ProgressBar
                     android:id="@+id/progressBar"

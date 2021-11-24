@@ -57,9 +57,10 @@ class AlbumFragment : Fragment() {
 
         viewModel.albums.observe(viewLifecycleOwner, Observer<List<AlbumModel>> {
             it.apply {
-                requireView().findViewById<ProgressBar>(R.id.progressBar).visibility=View.VISIBLE
+                requireView().findViewById<ProgressBar>(R.id.progressBar).visibility = View.VISIBLE
                 viewModelAdapter!!.albums = this
-                requireView().findViewById<ProgressBar>(R.id.progressBar).visibility=View.INVISIBLE
+                requireView().findViewById<ProgressBar>(R.id.progressBar).visibility =
+                    View.INVISIBLE
             }
         })
         viewModel.eventNetworkError.observe(
