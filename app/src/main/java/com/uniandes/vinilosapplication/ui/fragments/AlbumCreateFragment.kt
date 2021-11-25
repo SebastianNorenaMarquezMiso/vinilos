@@ -1,7 +1,6 @@
 package com.uniandes.vinilosapplication.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,12 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.uniandes.vinilosapplication.R
 import com.uniandes.vinilosapplication.data.model.AlbumCreateModel
 import com.uniandes.vinilosapplication.databinding.AlbumCreateFragmentBinding
-import com.uniandes.vinilosapplication.ui.adapters.AlbumCreateAdapter
 import com.uniandes.vinilosapplication.ui.viewmodel.AlbumCreateViewModel
 
 /**
@@ -25,9 +21,7 @@ import com.uniandes.vinilosapplication.ui.viewmodel.AlbumCreateViewModel
 class AlbumCreateFragment : Fragment() {
     private var _binding: AlbumCreateFragmentBinding? = null
     private val binding get() = _binding!!
-    private lateinit var recyclerView: RecyclerView
     private lateinit var viewModel: AlbumCreateViewModel
-    private var viewModelAdapter: AlbumCreateAdapter? = null
 
     private var albumCreateTitle: EditText? = null
     private var albumCreateCover: EditText? = null
@@ -42,16 +36,10 @@ class AlbumCreateFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = AlbumCreateFragmentBinding.inflate(inflater, container, false)
-        val view = binding.root
-        viewModelAdapter = AlbumCreateAdapter()
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        recyclerView = binding.fragmentsRv
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = viewModelAdapter
-
         albumCreateTitle = requireView().findViewById<EditText>(R.id.albumCreateTitle)
         albumCreateCover = requireView().findViewById<EditText>(R.id.albumCreateCover)
         albumCreateDate = requireView().findViewById<EditText>(R.id.albumCreateDate)
@@ -61,17 +49,19 @@ class AlbumCreateFragment : Fragment() {
             requireView().findViewById<EditText>(R.id.albumCreateRecordCompany)
 
         binding.albumCreateButton.setOnClickListener {
-            viewModel.postDataToNetwork(
-                AlbumCreateModel(
-                    name = albumCreateTitle!!.text.toString(),
-                    cover = albumCreateCover!!.text.toString(),
-                    releaseDate = albumCreateDate!!.text.toString(),
-                    description = albumCreateDescription!!.text.toString(),
-                    genre = albumCreateGenre!!.text.toString(),
-                    recordLabel = albumCreateRecordCompany!!.text.toString()
-                )
-            ) {
-                onNetworkSuccess()
+            if (validFields()) {
+                viewModel.postDataToNetwork(
+                    AlbumCreateModel(
+                        name = albumCreateTitle!!.text.toString(),
+                        cover = albumCreateCover!!.text.toString(),
+                        releaseDate = albumCreateDate!!.text.toString(),
+                        description = albumCreateDescription!!.text.toString(),
+                        genre = albumCreateGenre!!.text.toString(),
+                        recordLabel = albumCreateRecordCompany!!.text.toString()
+                    )
+                ) {
+                    onNetworkSuccess()
+                }
             }
         }
     }
@@ -86,13 +76,7 @@ class AlbumCreateFragment : Fragment() {
             this,
             AlbumCreateViewModel.Factory(activity.application)
         ).get(AlbumCreateViewModel::class.java)
-        viewModel.albumCreate.observe(viewLifecycleOwner, Observer<AlbumCreateModel> {
-            it.apply {
-                /*requireView().findViewById<ProgressBar>(R.id.progressBar).visibility=View.VISIBLE
-                viewModelAdapter!!.album_create = this
-                requireView().findViewById<ProgressBar>(R.id.progressBar).visibility=View.INVISIBLE*/
-            }
-        })
+
         viewModel.eventNetworkError.observe(
             viewLifecycleOwner,
             Observer<String> { isNetworkError ->
@@ -100,21 +84,34 @@ class AlbumCreateFragment : Fragment() {
             })
     }
 
-    fun onNetworkSuccess() {
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    private fun validFields(): Boolean {
+        if (albumCreateTitle!!.text.toString().trim() != "" &&
+            albumCreateCover!!.text.toString().trim() != "" &&
+            albumCreateDate!!.text.toString().trim() != "" &&
+            albumCreateDescription!!.text.toString().trim() != "" &&
+            albumCreateGenre!!.text.toString().trim() != "" &&
+            albumCreateRecordCompany!!.text.toString().trim() != ""
+        ) {
+            return true;
+        }
+
+        Toast.makeText(activity, "No pueden haber campos vacios", Toast.LENGTH_LONG).show()
+        return false;
+    }
+
+    private fun onNetworkSuccess() {
         val action = AlbumCreateFragmentDirections.actionAlbumCreateFragmentToAlbumFragment()
 
         // Navigate using that action
         requireView().findNavController().navigate(action)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
     private fun onNetworkError() {
-        Log.d("333333", "enrtoooooooo")
-
         if (!viewModel.isNetworkErrorShown.value!!) {
             Toast.makeText(activity, viewModel.eventNetworkError.value, Toast.LENGTH_LONG).show()
             viewModel.onNetworkErrorShown()

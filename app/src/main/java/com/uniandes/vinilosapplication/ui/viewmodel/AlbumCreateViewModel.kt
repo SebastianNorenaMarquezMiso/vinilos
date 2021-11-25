@@ -1,7 +1,6 @@
 package com.uniandes.vinilosapplication.ui.viewmodel
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.*
 import com.uniandes.vinilosapplication.data.model.AlbumCreateModel
 import com.uniandes.vinilosapplication.repositories.AlbumCreateRepository
@@ -12,12 +11,7 @@ class AlbumCreateViewModel(application: Application) : AndroidViewModel(applicat
 
     private val albumCreateRepository = AlbumCreateRepository(application)
 
-    private val _albumCreate = MutableLiveData<AlbumCreateModel>()
-
-    val albumCreate: LiveData<AlbumCreateModel>
-        get() = _albumCreate
-
-    private var _eventNetworkError = MutableLiveData<String>(null)
+    private var _eventNetworkError = MutableLiveData<String>("")
 
     val eventNetworkError: LiveData<String>
         get() = _eventNetworkError
@@ -27,29 +21,10 @@ class AlbumCreateViewModel(application: Application) : AndroidViewModel(applicat
     val isNetworkErrorShown: LiveData<Boolean>
         get() = _isNetworkErrorShown
 
-    init {}
 
-    /*private fun refreshDataFromNetwork() {
-        try {
-            viewModelScope.launch(Dispatchers.Default) {
-                withContext(Dispatchers.IO) {
-                    val data = albumCreateRepository.postData()
-                    _albumCreate.postValue(data)
-                }
-                _eventNetworkError.postValue(false)
-                _isNetworkErrorShown.postValue(false)
-            }
-        } catch (e: Exception) {
-            _eventNetworkError.value = true
-        }
-    }*/
-
-
-    public fun postDataToNetwork(albumBody: AlbumCreateModel, callback: () -> Unit) {
+    fun postDataToNetwork(albumBody: AlbumCreateModel, callback: () -> Unit) {
         return albumCreateRepository.postData(albumBody, {
-
-            Log.d("333", it.toString())
-            _eventNetworkError.value = "false"
+            _eventNetworkError.value = ""
             _isNetworkErrorShown.value = false
             callback()
 

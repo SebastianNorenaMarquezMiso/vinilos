@@ -26,7 +26,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:ems="10"
-                android:hint="Titulo"
+                android:hint="@string/album_create_title"
+                android:autofillHints="@string/album_create_title"
                 android:inputType="textPersonName"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="16dp" />
@@ -37,7 +38,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:ems="10"
-                android:hint="Cover"
+                android:hint="@string/album_create_cover"
+                android:autofillHints="@string/album_create_cover"
                 android:inputType="textPersonName"
                 app:layout_constraintTop_toBottomOf="@+id/albumCreateTitle"
                 tools:layout_editor_absoluteX="16dp" />
@@ -48,7 +50,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:ems="10"
-                android:hint="Fecha lanzamiento"
+                android:hint="@string/album_create_date"
+                android:autofillHints="@string/album_create_date"
                 android:inputType="date"
                 app:layout_constraintTop_toBottomOf="@+id/albumCreateCover"
                 tools:layout_editor_absoluteX="16dp" />
@@ -59,7 +62,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:ems="10"
-                android:hint="Descipción"
+                android:hint="@string/album_create_description"
+                android:autofillHints="@string/album_create_description"
                 android:inputType="textPersonName"
                 app:layout_constraintTop_toBottomOf="@+id/albumCreateDate"
                 tools:layout_editor_absoluteX="16dp" />
@@ -70,7 +74,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:ems="10"
-                android:hint="Genero"
+                android:hint="@string/album_create_genre"
+                android:autofillHints="@string/album_create_genre"
                 android:inputType="textPersonName"
                 app:layout_constraintTop_toBottomOf="@+id/albumCreateDescription"
                 tools:layout_editor_absoluteX="16dp" />
@@ -81,7 +86,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:ems="10"
-                android:hint="Disquera"
+                android:hint="@string/album_create_record_company"
+                android:autofillHints="@string/album_create_record_company"
                 android:inputType="textPersonName"
                 app:layout_constraintTop_toBottomOf="@+id/albumCreateGenre"
                 tools:layout_editor_absoluteX="16dp" />
@@ -99,20 +105,6 @@
                 android:textColor="@color/white"
                 app:layout_constraintTop_toBottomOf="@+id/albumCreateRecordCompany"
                 tools:layout_editor_absoluteX="98dp" />
-
-
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="74dp"
-                android:layout_marginBottom="74dp">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/fragments_rv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:listitem="@layout/album_item" />
-            </ScrollView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
