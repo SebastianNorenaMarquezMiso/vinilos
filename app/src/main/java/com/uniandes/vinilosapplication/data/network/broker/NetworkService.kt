@@ -121,6 +121,24 @@ class NetworkService constructor(context: Context) {
         )
     }
 
+    fun associateTrack(
+        albumId: Int,
+        trackBody: String,
+        onComplete: (resp: JSONObject) -> Unit,
+        onError: (error: VolleyError) -> Unit
+    ) {
+        requestQueue.add(
+            postRequest("albums/$albumId/tracks",
+                JSONObject(trackBody),
+                Response.Listener<JSONObject> { response ->
+                    onComplete(response)
+                },
+                Response.ErrorListener {
+                    onError(it)
+                })
+        )
+    }
+
     suspend fun getMusicians(
 
     ) = suspendCoroutine<List<MusicianModel>> { cont ->

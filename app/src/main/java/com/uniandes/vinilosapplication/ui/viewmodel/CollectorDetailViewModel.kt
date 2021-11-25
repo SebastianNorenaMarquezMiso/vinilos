@@ -1,7 +1,6 @@
 package com.uniandes.vinilosapplication.ui.viewmodel
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.*
 import com.uniandes.vinilosapplication.data.model.CollectorModel
 import com.uniandes.vinilosapplication.repositories.CollectorDetailRepository

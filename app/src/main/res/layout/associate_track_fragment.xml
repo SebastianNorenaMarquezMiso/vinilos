@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:context=".ui.fragments.AlbumCreateFragment"
+            tools:ignore="MissingConstraints">
+
+            <EditText
+                android:id="@+id/associateTrackName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:hint="@string/associate_track_name"
+                android:autofillHints="@string/associate_track_name"
+                android:inputType="textPersonName"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="16dp" />
+
+            <EditText
+                android:id="@+id/associateTrackDuration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:hint="@string/associate_track_duration"
+                android:autofillHints="@string/associate_track_duration"
+                android:inputType="textPersonName"
+                app:layout_constraintTop_toBottomOf="@+id/associateTrackName"
+                tools:layout_editor_absoluteX="16dp" />
+
+            <Button
+                android:id="@+id/associateTrackButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/button_gradient"
+                android:fontFamily="@font/montserrat_semibold"
+                android:letterSpacing=".15"
+                android:padding="7dp"
+                android:text="@string/button_associate_track"
+                android:textColor="@color/white"
+                app:layout_constraintTop_toBottomOf="@+id/associateTrackDuration"
+                tools:layout_editor_absoluteX="98dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
