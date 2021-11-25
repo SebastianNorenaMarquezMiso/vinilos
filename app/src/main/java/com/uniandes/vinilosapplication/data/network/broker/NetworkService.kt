@@ -104,6 +104,23 @@ class NetworkService constructor(context: Context) {
         )
     }
 
+    fun createAlbum(
+        albumBody: String,
+        onComplete: (resp: JSONObject) -> Unit,
+        onError: (error: VolleyError) -> Unit
+    ) {
+        requestQueue.add(
+            postRequest("albums",
+                JSONObject(albumBody),
+                Response.Listener<JSONObject> { response ->
+                    onComplete(response)
+                },
+                Response.ErrorListener {
+                    onError(it)
+                })
+        )
+    }
+
     suspend fun getMusicians(
 
     ) = suspendCoroutine<List<MusicianModel>> { cont ->

@@ -32,8 +32,8 @@
         android:label="@string/title_album"
         tools:layout="@layout/album_fragment">
         <action
-            android:id="@+id/action_albumFragment_to_commentFragment"
-            app:destination="@id/commentFragment" />
+            android:id="@+id/action_albumFragment_to_albumCreateFragment"
+            app:destination="@id/albumCreateFragment" />
         <action
             android:id="@+id/action_albumFragment_to_albumDetailFragment"
             app:destination="@id/albumDetailFragment" />
@@ -47,6 +47,15 @@
         <argument
             android:name="albumId"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumCreateFragment"
+        android:name="com.uniandes.vinilosapplication.ui.fragments.AlbumCreateFragment"
+        android:label="@string/title_album_create"
+        tools:layout="@layout/album_create_fragment">
+        <action
+            android:id="@+id/action_albumCreateFragment_to_albumFragment"
+            app:destination="@id/albumFragment" />
     </fragment>
     <fragment
         android:id="@+id/musicianFragment"

@@ -41,4 +41,6 @@
     <string name="collector_image">Collector Image</string>
     <string name="title_detail_collector">Coleccionista Info</string>
     <string name="collector_telephone">Collector Telephone</string>
+    <string name="title_album_create">Nuevo Álbum</string>
+    <string name="button_create_album">Crear Álbum</string>
 </resources>
