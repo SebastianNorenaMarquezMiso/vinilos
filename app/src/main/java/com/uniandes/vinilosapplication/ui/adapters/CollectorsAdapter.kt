@@ -1,5 +1,6 @@
 package com.uniandes.vinilosapplication.ui.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
@@ -14,6 +15,7 @@ import com.uniandes.vinilosapplication.ui.fragments.CollectorFragmentDirections
 class CollectorsAdapter : RecyclerView.Adapter<CollectorsAdapter.CollectorViewHolder>() {
 
     var collectors: List<CollectorModel> = emptyList()
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -34,7 +36,10 @@ class CollectorsAdapter : RecyclerView.Adapter<CollectorsAdapter.CollectorViewHo
             it.collector = collectors[position]
         }
         holder.viewDataBinding.root.setOnClickListener {
-            val action = CollectorFragmentDirections.actionCollectorFragmentToAlbumFragment()
+            val action =
+                CollectorFragmentDirections.actionCollectorFragmentToCollectorDetailFragment(
+                    collectors[position].collectorId!!
+                )
             // Navigate using that action
             holder.viewDataBinding.root.findNavController().navigate(action)
         }

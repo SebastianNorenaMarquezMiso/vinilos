@@ -35,7 +35,7 @@ class AlbumDetailFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = AlbumDetailFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
         viewModelAdapter = AlbumDetailAdapter()
@@ -64,10 +64,10 @@ class AlbumDetailFragment : Fragment() {
                 binding.album = this
                 val albumImage = view!!.findViewById<ImageView>(R.id.iv_logo_album)
                 picasso.load(this.cover).into(albumImage)
-                requireView().findViewById<ProgressBar>(R.id.progressBar).visibility=View.VISIBLE
+                requireView().findViewById<ProgressBar>(R.id.progressBar).visibility = View.VISIBLE
                 viewModelAdapter!!.tracks = this.tracks!!
-                requireView().findViewById<ProgressBar>(R.id.progressBar).visibility=View.INVISIBLE
-//                if (this)
+                requireView().findViewById<ProgressBar>(R.id.progressBar).visibility =
+                    View.INVISIBLE
             }
         })
         viewModel.eventNetworkError.observe(

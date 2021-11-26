@@ -1,55 +1,44 @@
 <resources>
     <string name="app_name">Vinilos App</string>
-    <string name="default_text">Haga clic en el botón para cargar información</string>
-    <string name="post_text">Haga clic en el botón para crear un dato</string>
-    <string name="put_text">Haga clic en el botón para modificar un dato</string>
-    <string name="fetch_label">Obtener coleccionistas</string>
-    <string name="post_label">Crear coleccionista</string>
-    <string name="put_label">Modificar coleccionista</string>
-    <string name="id_hint">ID</string>
-    <string name="name_hint">John Doe</string>
-    <string name="phone_hint">3112223344</string>
-    <string name="mail_hint">example@domain.com</string>
-    <string name="action_switch_layout">Cambiar actividad</string>
 
-    <string name="action_settings">Settings</string>
+
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="collector_name_placeholder">Nombre del coleccionista</string>
-    <string name="collector_email_placeholder">Correo del coleccionista</string>
-    <string name="collector_phone_placeholder">Número telefónico</string>
-    <string name="comment_rating_placeholder">##</string>
-    <string name="comment_description_placeholder">Descripción del comentario</string>
-    <string name="album_name_placeholder">Nombre del album</string>
-    <string name="album_description_placeholder">Descripcion del album</string>
+
     <string name="txt_no_comments">No hay comentarios para este álbum</string>
     <string name="title_albums">Albums</string>
     <string name="title_collectors">Coleccionistas</string>
     <string name="title_comments">Comentarios del álbum</string>
-
-    <string name="title_vinilos">VINILOS</string>
-    <string name="subtitle_vinilos">Music App</string>
-    <string name="button_start">Iniciar</string>
     <string name="title_album">Álbumes</string>
-    <string name="new_album">Nuevo Album</string>
-    <string name="title_detail_album">Detalle Álbum</string>
     <string name="add_song">Asociar Canción</string>
-    <string name="description_album">Descripción</string>
-    <string name="songs_album">Canciones</string>
-    <string name="button_add">Agregar</string>
     <string name="button_add_album">Nuevo Album</string>
-    <string name="button_create_album">Crear Álbum</string>
-    <string name="title_artist">Artistas</string>
-    <string name="title_detail_artist">Artista Info</string>
+    <string name="title_detail_musician">Detalle Artista</string>
     <string name="title_collector">Coleccionistas</string>
-    <string name="title_detail_collector">Coleccionista Info</string>
-    <string name="descripcion">DESCRIPCION</string>
+    <string name="description">DESCRIPCION</string>
+    <string name="button_start">Iniciar</string>
     <string name="canciones">CANCIONES</string>
-    <string name="close_app">Salir</string>
+    <string name="artistas">ARTISTAS</string>
+    <string name="albums">ÁLBUMES</string>
+    <string name="collectors">COLECCIONISTAS</string>
+    <string name="title_detail_album">Detalle Álbum</string>
+    <string name="title_musicians">Artistas</string>
+    <string name="logo_vinilos">Logo Vinilos</string>
+    <string name="vinilos_name">VINILOS</string>
+    <string name="logo_album">Logo album</string>
+    <string name="album_name">Nombre</string>
+    <string name="album_description">descripcion</string>
+    <string name="cover_album">Cover Album</string>
+    <string name="collector_name">nombre</string>
+    <string name="collector_border">Collector Border</string>
+    <string name="collector_email">email</string>
+    <string name="musician_name">Nombre</string>
+    <string name="musician_description">Descripción</string>
+    <string name="musician_image">Musician Image</string>
+    <string name="musician_item_image">Musician Item Image</string>
+    <string name="musician_item_name">Nombre de artista</string>
+    <string name="track_item_image">Track Item Image</string>
+    <string name="collector_detail_email">Collector Email</string>
+    <string name="collector_image">Collector Image</string>
+    <string name="title_detail_collector">Coleccionista Info</string>
+    <string name="collector_telephone">Collector Telephone</string>
 </resources>
