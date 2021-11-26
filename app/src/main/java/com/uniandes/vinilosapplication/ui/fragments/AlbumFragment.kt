@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -44,6 +45,13 @@ class AlbumFragment : Fragment() {
         recyclerView = binding.fragmentsRv
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = viewModelAdapter
+
+        binding.newAlbum.setOnClickListener {
+            val action = AlbumFragmentDirections.actionAlbumFragmentToAlbumCreateFragment()
+
+            // Navigate using that action
+            requireView().findNavController().navigate(action)
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
