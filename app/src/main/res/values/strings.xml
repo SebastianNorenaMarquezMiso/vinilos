@@ -49,4 +49,8 @@
     <string name="album_create_description">Descipción</string>
     <string name="album_create_genre">Genero</string>
     <string name="album_create_record_company">Disquera</string>
+    <string name="associate_track_name">Nombre</string>
+    <string name="associate_track_duration">Duración</string>
+    <string name="button_associate_track">Agregar</string>
+    <string name="title_associate_track">Asociar Canción</string>
 </resources>

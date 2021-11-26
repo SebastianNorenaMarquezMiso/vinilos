@@ -97,11 +97,11 @@ class AlbumCreateFragment : Fragment() {
             albumCreateGenre!!.text.toString().trim() != "" &&
             albumCreateRecordCompany!!.text.toString().trim() != ""
         ) {
-            return true;
+            return true
         }
 
         Toast.makeText(activity, "No pueden haber campos vacios", Toast.LENGTH_LONG).show()
-        return false;
+        return false
     }
 
     private fun onNetworkSuccess() {
