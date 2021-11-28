@@ -12,7 +12,6 @@ import com.uniandes.vinilosapplication.databinding.TrackItemBinding
 
 class AlbumDetailAdapter : RecyclerView.Adapter<AlbumDetailAdapter.AlbumDetailViewHolder>() {
 
-
     var tracks: List<TrackModel> = emptyList()
         @SuppressLint("NotifyDataSetChanged")
         set(value) {

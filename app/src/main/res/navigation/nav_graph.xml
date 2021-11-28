@@ -10,8 +10,21 @@
         android:label="@string/title_collector"
         tools:layout="@layout/collector_fragment">
         <action
-            android:id="@+id/action_collectorFragment_to_albumFragment"
-            app:destination="@id/albumFragment" />
+            android:id="@+id/action_collectorFragment_to_collectorDetailFragment"
+            app:destination="@id/collectorDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/collectorDetailFragment"
+        android:name="com.uniandes.vinilosapplication.ui.fragments.CollectorDetailFragment"
+        android:label="@string/title_detail_collector"
+        tools:layout="@layout/collector_detail_fragment">
+
+        <argument
+            android:name="collectorId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_collectorDetailFragment_to_albumDetailFragment"
+            app:destination="@id/albumDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/albumFragment"
@@ -19,8 +32,8 @@
         android:label="@string/title_album"
         tools:layout="@layout/album_fragment">
         <action
-            android:id="@+id/action_albumFragment_to_commentFragment"
-            app:destination="@id/commentFragment" />
+            android:id="@+id/action_albumFragment_to_albumCreateFragment"
+            app:destination="@id/albumCreateFragment" />
         <action
             android:id="@+id/action_albumFragment_to_albumDetailFragment"
             app:destination="@id/albumDetailFragment" />
@@ -34,6 +47,53 @@
         <argument
             android:name="albumId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_albumDetailFragment_to_associateTrackFragment"
+            app:destination="@id/associateTrackFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumCreateFragment"
+        android:name="com.uniandes.vinilosapplication.ui.fragments.AlbumCreateFragment"
+        android:label="@string/title_album_create"
+        tools:layout="@layout/album_create_fragment">
+        <action
+            android:id="@+id/action_albumCreateFragment_to_albumFragment"
+            app:destination="@id/albumFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/associateTrackFragment"
+        android:name="com.uniandes.vinilosapplication.ui.fragments.AssociateTrackFragment"
+        android:label="@string/title_associate_track"
+        tools:layout="@layout/associate_track_fragment">
+
+        <argument
+            android:name="albumId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_associateTrackFragment_to_albumDetailFragment"
+            app:destination="@id/albumDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/musicianFragment"
+        android:name="com.uniandes.vinilosapplication.ui.fragments.MusicianFragment"
+        android:label="@string/title_musicians"
+        tools:layout="@layout/musician_fragment">
+        <action
+            android:id="@+id/action_musicianFragment_to_musicianDetailFragment"
+            app:destination="@id/musicianDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/musicianDetailFragment"
+        android:name="com.uniandes.vinilosapplication.ui.fragments.MusicianDetailFragment"
+        android:label="@string/title_detail_musician"
+        tools:layout="@layout/album_detail_fragment">
+
+        <argument
+            android:name="musicianId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_musicianDetailFragment_to_albumDetailFragment"
+            app:destination="@id/albumDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/musicianFragment"
