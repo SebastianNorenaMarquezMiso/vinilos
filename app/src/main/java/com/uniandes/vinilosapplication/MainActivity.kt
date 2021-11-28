@@ -1,12 +1,10 @@
 package com.uniandes.vinilosapplication
 
 import android.os.Bundle
-
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.core.content.res.ResourcesCompat
-
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
