@@ -42,4 +42,5 @@
             app:menu="@menu/layout_menu" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

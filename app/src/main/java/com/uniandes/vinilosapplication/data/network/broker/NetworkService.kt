@@ -104,6 +104,43 @@ class NetworkService constructor(context: Context) {
         )
     }
 
+    fun createAlbum(
+        albumBody: String,
+        onComplete: (resp: JSONObject) -> Unit,
+        onError: (error: VolleyError) -> Unit
+    ) {
+        requestQueue.add(
+            postRequest("albums",
+                JSONObject(albumBody),
+                Response.Listener<JSONObject> { response ->
+                    onComplete(response)
+                },
+                Response.ErrorListener {
+                    onError(it)
+                })
+        )
+    }
+
+    fun associateTrack(
+        albumId: Int,
+        trackBody: String,
+        onComplete: (resp: JSONObject) -> Unit,
+        onError: (error: VolleyError) -> Unit
+    ) {
+        requestQueue.add(
+            postRequest("albums/$albumId/tracks",
+                JSONObject(trackBody),
+
+                Response.Listener<JSONObject> { response ->
+                    onComplete(response)
+                },
+                Response.ErrorListener {
+                    onError(it)
+                })
+        )
+
+    }
+
     suspend fun getMusicians(
 
     ) = suspendCoroutine<List<MusicianModel>> { cont ->
@@ -270,6 +307,64 @@ class NetworkService constructor(context: Context) {
         )
     }
 
+    suspend fun getCollectorDetail(
+        collectorId: Int
+    ) = suspendCoroutine<CollectorModel> { cont ->
+        requestQueue.add(
+            getRequest("collectors/$collectorId",
+                Response.Listener<String> { response ->
+                    val item = JSONObject(response)
+
+                    val collector = CollectorModel(
+                        collectorId = item.getInt("id"),
+                        name = item.getString("name"),
+                        telephone = item.getString("telephone"),
+                        email = item.getString("email")
+                    )
+                    cont.resume(collector)
+                },
+                Response.ErrorListener {
+                    Log.d("", it.message.toString())
+                    cont.resumeWithException(it)
+                })
+        )
+    }
+
+    suspend fun getCollectorAlbums(
+        collectorId: Int
+    ) = suspendCoroutine<List<AlbumModel>> { cont ->
+        requestQueue.add(
+            getRequest("collectors/$collectorId/albums",
+                Response.Listener<String> { response ->
+
+                    val resp = JSONArray(response)
+                    val list = mutableListOf<AlbumModel>()
+                    var item: JSONObject? = null
+
+                    for (i in 0 until resp.length()) {
+                        item = resp.getJSONObject(i)
+                        val album = item.getJSONObject("album")
+                        list.add(
+                            i,
+                            AlbumModel(
+                                albumId = album.getInt("id"),
+                                name = album.getString("name"),
+                                cover = album.getString("cover"),
+                                recordLabel = album.getString("recordLabel"),
+                                releaseDate = album.getString("releaseDate"),
+                                genre = album.getString("genre"),
+                                description = album.getString("description")
+                            )
+                        )
+                    }
+                    cont.resume(list)
+                },
+                Response.ErrorListener {
+                    cont.resumeWithException(it)
+                })
+        )
+    }
+
     suspend fun getComments(
         albumId: Int
     ) = suspendCoroutine<List<CommentModel>> { cont ->
@@ -325,7 +420,7 @@ class NetworkService constructor(context: Context) {
     ): StringRequest {
         return StringRequest(Request.Method.GET, BASE_URL + path, responseListener, errorListener)
     }
-
+   
     private fun postRequest(
         path: String,
         body: JSONObject,

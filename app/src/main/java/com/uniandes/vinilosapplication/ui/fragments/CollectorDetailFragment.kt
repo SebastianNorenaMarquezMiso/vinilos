@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -15,31 +14,30 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.uniandes.vinilosapplication.R
-import com.uniandes.vinilosapplication.data.config.CircleTransform
-import com.uniandes.vinilosapplication.data.model.MusicianModel
-import com.uniandes.vinilosapplication.databinding.MusicianDetailFragmentBinding
-import com.uniandes.vinilosapplication.ui.adapters.MusicianDetailAdapter
-import com.uniandes.vinilosapplication.ui.viewmodel.MusicianDetailViewModel
+import com.uniandes.vinilosapplication.data.model.CollectorModel
+import com.uniandes.vinilosapplication.databinding.CollectorDetailFragmentBinding
+import com.uniandes.vinilosapplication.ui.adapters.CollectorDetailAdapter
+import com.uniandes.vinilosapplication.ui.viewmodel.CollectorDetailViewModel
 
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
-class MusicianDetailFragment : Fragment() {
-    private var _binding: MusicianDetailFragmentBinding? = null
+class CollectorDetailFragment : Fragment() {
+    private var _binding: CollectorDetailFragmentBinding? = null
     private val binding get() = _binding!!
     private lateinit var recyclerView: RecyclerView
-    private lateinit var viewModel: MusicianDetailViewModel
-    private var viewModelAdapter: MusicianDetailAdapter? = null
+    private lateinit var viewModel: CollectorDetailViewModel
+    private var viewModelAdapter: CollectorDetailAdapter? = null
     private val picasso = Picasso.get()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = MusicianDetailFragmentBinding.inflate(inflater, container, false)
+        _binding = CollectorDetailFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
-        viewModelAdapter = MusicianDetailAdapter()
+        viewModelAdapter = CollectorDetailAdapter()
         return view
     }
 
@@ -54,20 +52,17 @@ class MusicianDetailFragment : Fragment() {
         val activity = requireNotNull(this.activity) {
             "You can only access the viewModel after onActivityCreated()"
         }
-        activity.actionBar?.title = getString(R.string.title_musicians)
-        val args: MusicianDetailFragmentArgs by navArgs()
+        activity.actionBar?.title = getString(R.string.title_collectors)
+        val args: CollectorDetailFragmentArgs by navArgs()
         viewModel = ViewModelProvider(
             this,
-            MusicianDetailViewModel.Factory(activity.application, args.musicianId)
-        ).get(MusicianDetailViewModel::class.java)
-        viewModel.musicianDetail.observe(viewLifecycleOwner, Observer<MusicianModel> {
+            CollectorDetailViewModel.Factory(activity.application, args.collectorId)
+        ).get(CollectorDetailViewModel::class.java)
+        viewModel.collectorDetail.observe(viewLifecycleOwner, Observer<CollectorModel> {
             it.apply {
-                binding.musician = this
-                val musicianImage = view!!.findViewById<ImageView>(R.id.iv_musician_picture)
-                picasso.load(this.image).resize(600, 600).transform(CircleTransform())
-                    .into(musicianImage)
+                binding.collector = this
                 requireView().findViewById<ProgressBar>(R.id.progressBar).visibility = View.VISIBLE
-                viewModelAdapter!!.albums = this.albums!!
+                viewModelAdapter!!.albums = this.collectorAlbums!!
                 requireView().findViewById<ProgressBar>(R.id.progressBar).visibility =
                     View.INVISIBLE
             }

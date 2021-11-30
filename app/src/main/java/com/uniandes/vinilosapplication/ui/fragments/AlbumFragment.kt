@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.uniandes.vinilosapplication.R
@@ -42,6 +43,13 @@ class AlbumFragment : Fragment() {
         recyclerView = binding.fragmentsRv
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = viewModelAdapter
+
+        binding.newAlbum.setOnClickListener {
+            val action = AlbumFragmentDirections.actionAlbumFragmentToAlbumCreateFragment()
+
+            // Navigate using that action
+            requireView().findNavController().navigate(action)
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -57,9 +65,10 @@ class AlbumFragment : Fragment() {
 
         viewModel.albums.observe(viewLifecycleOwner, Observer<List<AlbumModel>> {
             it.apply {
-                requireView().findViewById<ProgressBar>(R.id.progressBar).visibility=View.VISIBLE
+                requireView().findViewById<ProgressBar>(R.id.progressBar).visibility = View.VISIBLE
                 viewModelAdapter!!.albums = this
-                requireView().findViewById<ProgressBar>(R.id.progressBar).visibility=View.INVISIBLE
+                requireView().findViewById<ProgressBar>(R.id.progressBar).visibility =
+                    View.INVISIBLE
             }
         })
         viewModel.eventNetworkError.observe(

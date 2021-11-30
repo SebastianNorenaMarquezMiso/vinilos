@@ -37,4 +37,20 @@
     <string name="musician_item_image">Musician Item Image</string>
     <string name="musician_item_name">Nombre de artista</string>
     <string name="track_item_image">Track Item Image</string>
+    <string name="collector_detail_email">Collector Email</string>
+    <string name="collector_image">Collector Image</string>
+    <string name="title_detail_collector">Coleccionista Info</string>
+    <string name="collector_telephone">Collector Telephone</string>
+    <string name="title_album_create">Nuevo Álbum</string>
+    <string name="button_create_album">Crear Álbum</string>
+    <string name="album_create_title">Titulo</string>
+    <string name="album_create_cover">Cover</string>
+    <string name="album_create_date">Fecha lanzamiento</string>
+    <string name="album_create_description">Descipción</string>
+    <string name="album_create_genre">Genero</string>
+    <string name="album_create_record_company">Disquera</string>
+    <string name="associate_track_name">Nombre</string>
+    <string name="associate_track_duration">Duración</string>
+    <string name="button_associate_track">Agregar</string>
+    <string name="title_associate_track">Asociar Canción</string>
 </resources>

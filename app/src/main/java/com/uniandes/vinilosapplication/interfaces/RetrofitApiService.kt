@@ -30,6 +30,7 @@ interface RetrofitApiService {
 
     @FormUrlEncoded
     @PUT("collectors")
+
     fun putCollectors(
         @Field("id") id: String,
         @Field("name") name: String,
