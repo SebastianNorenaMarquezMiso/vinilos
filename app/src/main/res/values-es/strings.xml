@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name" translatable="false">Vinilos App</string>
+
+    <!-- Strings used for fragments for navigation -->
+    <string name="txt_no_comments" translatable="false">No hay comentarios para este álbum</string>
+    <string name="title_albums" translatable="false">Albums</string>
+    <string name="title_collectors" translatable="false">Coleccionistas</string>
+    <string name="title_comments">Comentarios del álbum</string>
+    <string name="title_album">Álbumes</string>
+    <string name="add_song">Asociar Canción</string>
+    <string name="button_add_album">Nuevo Album</string>
+    <string name="title_detail_musician">Detalle Artista</string>
+    <string name="title_collector">Coleccionistas</string>
+    <string name="description">DESCRIPCION</string>
+    <string name="button_start">Iniciar</string>
+    <string name="canciones">CANCIONES</string>
+    <string name="artistas">ARTISTAS</string>
+    <string name="albums">ÁLBUMES</string>
+    <string name="collectors">COLECCIONISTAS</string>
+    <string name="title_detail_album">Detalle Álbum</string>
+    <string name="title_musicians">Artistas</string>
+    <string name="logo_vinilos">Logo Vinilos</string>
+    <string name="vinilos_name">VINILOS</string>
+    <string name="logo_album">Logo album</string>
+    <string name="album_name">Nombre</string>
+    <string name="album_description">descripcion</string>
+    <string name="cover_album">Caratula del Album</string>
+    <string name="collector_name">Nombre</string>
+    <string name="collector_border">Borde del coleccionista</string>
+    <string name="collector_email">email</string>
+    <string name="musician_name">Nombre</string>
+    <string name="musician_description">Descripción</string>
+    <string name="musician_image">Imagen de musico</string>
+    <string name="musician_item_image">Caratula de musico</string>
+    <string name="musician_item_name">Nombre de artista</string>
+    <string name="track_item_image">Imagen de cancion</string>
+    <string name="collector_detail_email">Email de coleccionista</string>
+    <string name="collector_image">Imagen de coleccionista</string>
+    <string name="title_detail_collector">Coleccionista Info</string>
+    <string name="collector_telephone">Telefono de coleccionista</string>
+    <string name="title_album_create">Nuevo Álbum</string>
+    <string name="button_create_album">Crear Álbum</string>
+    <string name="album_create_title">Titulo</string>
+    <string name="album_create_cover">Cover</string>
+    <string name="album_create_date">Fecha lanzamiento</string>
+    <string name="album_create_description">Descipción</string>
+    <string name="album_create_genre">Genero</string>
+    <string name="album_create_record_company">Disquera</string>
+    <string name="associate_track_name">Nombre</string>
+    <string name="associate_track_duration">Duración</string>
+    <string name="button_associate_track">Agregar</string>
+    <string name="title_associate_track">Asociar Canción</string>
+</resources>
