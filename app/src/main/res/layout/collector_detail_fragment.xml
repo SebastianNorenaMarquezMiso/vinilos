@@ -22,24 +22,24 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout"
-                android:layout_width="408dp"
-                android:layout_height="462dp"
-                android:background="@drawable/fondo_artista"
+                android:layout_width="410dp"
+                android:layout_height="300dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.333"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="MissingConstraints">
 
                 <ImageView
                     android:id="@+id/iv_collector_picture"
-                    android:layout_width="218dp"
-                    android:layout_height="315dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_width="154dp"
+                    android:layout_height="233dp"
+                    android:layout_marginTop="16dp"
                     android:contentDescription="@string/collector_image"
                     android:scaleType="center"
                     android:src="@drawable/logo_vinilos"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.082"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,7 +48,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="124dp"
                     android:fontFamily="@font/montserrat_medium"
                     android:hint="@string/collector_name"
                     android:text="@{collector.name}"
@@ -56,49 +56,42 @@
                     android:textSize="24sp"
                     android:translationY="-25dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.501"
+                    app:layout_constraintHorizontal_bias="0.748"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/iv_collector_picture" />
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/collectorEmail"
+                    android:layout_width="222dp"
+                    android:layout_height="23dp"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:hint="@string/collector_detail_email"
+                    android:text="@{collector.email}"
+                    android:textColor="@color/gray_900"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.915"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/collectorName" />
+
+                <TextView
+                    android:id="@+id/collectorNumber"
+                    android:layout_width="191dp"
+                    android:layout_height="14dp"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:hint="@string/collector_telephone"
+                    android:text="@{collector.telephone}"
+                    android:textColor="@color/gray_900"
+                    android:textSize="13sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.808"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/collectorEmail" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <TextView
-                android:id="@+id/collectorEmail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:fontFamily="@font/montserrat_regular"
-                android:hint="@string/collector_detail_email"
-                android:paddingLeft="50dp"
-                android:paddingTop="25dp"
-                android:paddingRight="50dp"
-                android:paddingBottom="25dp"
-                android:text="@{collector.email}"
-                android:textColor="@color/gray_900"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
-
-            <TextView
-                android:id="@+id/collectorNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:fontFamily="@font/montserrat_regular"
-                android:hint="@string/collector_telephone"
-                android:paddingLeft="50dp"
-                android:paddingTop="25dp"
-                android:paddingRight="50dp"
-                android:paddingBottom="25dp"
-                android:text="@{collector.telephone}"
-                android:textColor="@color/gray_900"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/collectorEmail" />
 
             <LinearLayout
                 android:id="@+id/linearLayout2"
@@ -107,9 +100,15 @@
                 android:background="@color/gray_200"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
+<<<<<<< HEAD
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/collectorNumber">
+=======
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+>>>>>>> develop
 
                 <TextView
                     android:id="@+id/textView7"
@@ -147,6 +146,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:listitem="@layout/album_item" />
+
+
             </FrameLayout>
 
 
